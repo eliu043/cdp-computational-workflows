@@ -1,52 +1,90 @@
-// script.js
-// example of a function
-function showMessage() {
-  const message = document.getElementById("message");
-  message.textContent = "You clicked the button!";
+const windows = document.querySelectorAll("[data-window]");
+let topZ = 10;
+let activeDrag = null;
+
+function bringToFront(panel) {
+  topZ += 1;
+  panel.style.setProperty("--z", topZ);
 }
 
-// This JavaScript code runs when the HTML page finishes loading
-// We wait for the page to load so we can be sure all HTML elements exist
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
 
-// This function runs when the page is ready
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded means all the HTML has been loaded and parsed
-    // This is important because we need to find HTML elements with JavaScript
-    
-    console.log('JavaScript is now running!'); // This message appears in the browser's console (F12 to see it)
-    
-    // Find our button in the HTML using its ID
-    // getElementById looks for an HTML element with the specified ID
-    const button = document.getElementById('demoButton');
-    
-    // Find our message display area in the HTML using its ID
-    // This is where we'll show messages when the button is clicked
-    const messageArea = document.getElementById('messageDisplay');
-    
-    // Add a "click event listener" to our button
-    // This tells JavaScript: "When someone clicks this button, do something"
-    button.addEventListener('click', function() {
-        // This function runs every time the button is clicked
-        
-        console.log('Button was clicked!'); // Log to console for debugging
-        
-        // Create a message to display
-        const currentTime = new Date().toLocaleTimeString(); // Get current time
-        const message = 'Hello! You clicked the button at ' + currentTime;
-        
-        // Display the message in our message area
-        // textContent sets the text inside the HTML element
-        messageArea.textContent = message;
-        
-        // Add some visual feedback by changing the button text temporarily
-        button.textContent = 'Thanks for clicking!';
-        
-        // After 2 seconds, change the button text back to original
-        // setTimeout runs a function after a specified delay (in milliseconds)
-        setTimeout(function() {
-            button.textContent = 'Click Me!';
-        }, 2000); // 2000 milliseconds = 2 seconds
-    });
+function viewportLimitedPosition(panel, left, top) {
+  const maxLeft = window.innerWidth - panel.offsetWidth - 8;
+  const maxTop = window.innerHeight - panel.offsetHeight - 8;
+
+  return {
+    left: clamp(left, 8, Math.max(8, maxLeft)),
+    top: clamp(top, 8, Math.max(8, maxTop)),
+  };
+}
+
+function beginDrag(panel, event) {
+  if (window.matchMedia("(max-width: 760px)").matches) {
+    return;
+  }
+
+  const closeButton = event.target.closest(".box-button");
+  const handle = event.target.closest("[data-handle]");
+
+  if (!handle || closeButton) {
+    return;
+  }
+
+  event.preventDefault();
+  bringToFront(panel);
+  panel.classList.add("is-dragging");
+
+  const rect = panel.getBoundingClientRect();
+  activeDrag = {
+    panel,
+    startX: event.clientX,
+    startY: event.clientY,
+    startLeft: rect.left,
+    startTop: rect.top,
+  };
+}
+
+function moveDrag(event) {
+  if (!activeDrag) {
+    return;
+  }
+
+  const next = viewportLimitedPosition(
+    activeDrag.panel,
+    activeDrag.startLeft + event.clientX - activeDrag.startX,
+    activeDrag.startTop + event.clientY - activeDrag.startY
+  );
+
+  activeDrag.panel.style.left = `${next.left}px`;
+  activeDrag.panel.style.top = `${next.top}px`;
+}
+
+function endDrag() {
+  if (!activeDrag) {
+    return;
+  }
+
+  activeDrag.panel.classList.remove("is-dragging");
+  activeDrag = null;
+}
+
+windows.forEach((panel) => {
+  const closeButton = panel.querySelector(".box-button");
+
+  panel.addEventListener("pointerdown", (event) => beginDrag(panel, event));
+  panel.addEventListener("mousedown", (event) => beginDrag(panel, event));
+  panel.addEventListener("click", () => bringToFront(panel));
+
+  closeButton.addEventListener("click", () => {
+    panel.hidden = true;
+  });
 });
 
-
+document.addEventListener("pointermove", moveDrag);
+document.addEventListener("mousemove", moveDrag);
+document.addEventListener("pointerup", endDrag);
+document.addEventListener("mouseup", endDrag);
+document.addEventListener("pointercancel", endDrag);

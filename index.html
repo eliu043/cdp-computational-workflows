@@ -1,113 +1,99 @@
 <!DOCTYPE html>
-<!-- This tells the browser this is an HTML5 document - always include this at the top -->
 <html lang="en">
-<!-- The html tag is the root element that contains everything on the page -->
-<!-- lang="en" tells the browser this page is in English -->
-
 <head>
-  <!-- The head section contains information about the page, not visible content -->
-  
   <meta charset="UTF-8">
-  <!-- This sets the character encoding to UTF-8, which supports special characters and emojis -->
-  
-  <title>Module 1</title>
-  <!-- This is the title that appears in the browser tab and bookmarks -->
-  
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <!-- This loads the Roboto font from Google Fonts for use on our page -->
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garden Window Study</title>
   <link rel="stylesheet" href="style.css">
-  <!-- This links our CSS file to style the page - the href points to our style.css file -->
 </head>
-
 <body>
-  <!-- The body contains all the visible content that users will see on the page -->
-  
-  <header>
-    <!-- The header is typically used for navigation and site branding -->
-    
-    <div class="left">Columbia GSAPP</div>
-    <!-- This div creates a container for the left side of the header -->
-    <!-- class="left" allows us to style this specific div with CSS -->
-    
-    <div class="center">
-      <!-- This div creates a container for the center of the header -->
-      Computational Design Practices<br>
-      <!-- This is the main text in the center -->
-      <!-- <br> creates a line break, moving the next text to a new line -->
-      <span>Project Archive</span>
-      <!-- span is an inline element that groups text without creating a new line -->
-      <!-- class="center" allows us to style this span differently -->
+  <main class="desktop" aria-label="Garden collage desktop">
+    <div class="garden-collage" aria-hidden="true">
+      <div class="garden-photo tile-a"></div>
+      <div class="garden-photo tile-b"></div>
+      <div class="garden-photo tile-c"></div>
+      <div class="paper-strip strip-a"></div>
+      <div class="paper-strip strip-b"></div>
+      <div class="paper-strip strip-c"></div>
     </div>
-    
-    <div class="right"><a href="#">About</a></div>
-    <!-- This div creates a container for the right side of the header -->
-    <!-- <a href="#">About</a> creates a clickable link (currently goes nowhere with #) -->
-  </header>
 
-  <main>
-    <!-- The main tag contains the primary content of the page -->
-    
-    <div class="project-meta">2025</div>
-    <!-- This div displays the year/project metadata -->
-    <!-- class="project-meta" allows us to style this with CSS -->
-    
-    <div class="project-title">Project Title</div>
-    <!-- This div displays the main project title -->
-    <!-- class="project-title" allows us to style this with CSS -->
-    
-    <div class="project-subtitle">Student Name</div>
-    <!-- This div displays the student's name as a subtitle -->
-    <!-- class="project-subtitle" allows us to style this with CSS -->
-    
-    <div class="advisor">Advisor<br><strong>Advisor Name</strong></div>
-    <!-- This div displays advisor information -->
-    <!-- <br> creates a line break -->
-    <!-- <strong> makes the text bold for emphasis -->
-    
-    <div class="section-title">Abstract</div>
-    <!-- This div creates a section heading -->
-    <!-- class="section-title" allows us to style all section titles consistently -->
-    
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-    <!-- <p> creates a paragraph element for text content -->
-    <!-- This is placeholder text (Lorem ipsum) commonly used in web design -->
-    
-    <div class="section-title">Motivation</div>
-    <!-- Another section heading for the Motivation section -->
-    
-    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
-    <!-- Another paragraph with placeholder text for the Motivation section -->
-    
-    <div class="section-title">Methodology</div>
-    <!-- Section heading for the Methodology section -->
-    
-    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-    <!-- Another paragraph with placeholder text for the Methodology section -->
-    
-    <div class="section-title">Interactive Demo</div>
-    <!-- Section heading for our JavaScript demonstration -->
-    
-    <p>Click the button below to see JavaScript in action:</p>
-    <!-- Instructions for the user -->
-    
-    <button id="demoButton">Click Me!</button>
-    <!-- This creates a clickable button -->
-    <!-- id="demoButton" gives this button a unique identifier so JavaScript can find it -->
-    <!-- The text "Click Me!" is what users will see on the button -->
-    
-    <div id="messageDisplay"></div>
-    <!-- This div will be used by JavaScript to show messages -->
-    <!-- id="messageDisplay" gives this div a unique identifier -->
-    <!-- It starts empty but JavaScript will add content to it -->
+    <section class="window hero-window" data-window style="left: 1vw; top: 1vh;" aria-labelledby="hero-title">
+      <div class="titlebar" data-handle>
+        <button class="box-button" type="button" aria-label="Close window">x</button>
+        <span class="title-lines"></span>
+        <span class="window-title">index.html</span>
+      </div>
+      <div class="window-body hero-body">
+        <p class="tag">&lt;h1&gt;</p>
+        <h1 id="hero-title">garden<br>review</h1>
+        <p class="tag">&lt;/h1&gt;</p>
+      </div>
+    </section>
+
+    <section class="window image-window" data-window style="left: 36vw; top: 24vh;" aria-labelledby="walk-title">
+      <div class="titlebar" data-handle>
+        <button class="box-button" type="button" aria-label="Close window">x</button>
+        <span class="title-lines"></span>
+        <span class="window-title">meadow.gif</span>
+      </div>
+      <div class="window-body media-body">
+        <img src="https://i.guim.co.uk/img/media/354f1e3ae79c005b200814b138c5cc6a07291498/0_359_6048_3629/master/6048.jpg?width=1200&amp;height=1200&amp;quality=85&amp;auto=format&amp;fit=crop&amp;s=bb22bd8823222d7e1cd151054ff46294" alt="Photographic garden with trees, meadow, and sky">
+        <button id="walk-title" class="link-button" type="button">wanna go on a walk with me?</button>
+      </div>
+    </section>
+
+    <section class="window note-window" data-window style="left: 53vw; top: 15vh;" aria-labelledby="note-title">
+      <div class="titlebar" data-handle>
+        <button class="box-button" type="button" aria-label="Close window">x</button>
+        <span class="title-lines"></span>
+        <span class="window-title">welcome</span>
+      </div>
+      <div class="window-body">
+        <h2 id="note-title">hello web user</h2>
+        <p>
+          This is placeholder text inside a draggable window. Move it around.
+          Stack it badly. Let the garden show through the edges.
+        </p>
+      </div>
+    </section>
+
+    <section class="window brutal-window" data-window style="left: 13vw; top: 66vh;" aria-labelledby="field-title">
+      <div class="titlebar" data-handle>
+        <button class="box-button" type="button" aria-label="Close window">x</button>
+        <span class="title-lines"></span>
+        <span class="window-title">field_notes.txt</span>
+      </div>
+      <div class="window-body">
+        <h2 id="field-title">what was that?!</h2>
+        <p>
+          A blunt little website made of garden clippings, browser fragments,
+          hard outlines, and low-resolution weather.
+        </p>
+        <div class="choice-row">
+          <button type="button">it's me</button>
+          <button type="button">this is the web</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="window small-window" data-window style="left: 74vw; top: 58vh;" aria-labelledby="seed-title">
+      <div class="titlebar" data-handle>
+        <button class="box-button" type="button" aria-label="Close window">x</button>
+        <span class="title-lines"></span>
+        <span class="window-title">seed_packet</span>
+      </div>
+      <div class="window-body">
+        <h2 id="seed-title">meadow.exe</h2>
+        <ul>
+          <li>trees</li>
+          <li>noise</li>
+          <li>sky fragments</li>
+          <li>drag handles</li>
+        </ul>
+      </div>
+    </section>
   </main>
-  <!-- End of main content area -->
-  
+
   <script src="script.js"></script>
-  <!-- This links our JavaScript file to the HTML page -->
-  <!-- The script tag is placed at the end of the body so the HTML loads first -->
-  <!-- src="script.js" tells the browser to load and run our JavaScript file -->
 </body>
-<!-- End of body - all visible content goes above this line -->
 </html>
-<!-- End of HTML document -->
