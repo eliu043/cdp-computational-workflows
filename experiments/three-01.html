@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three.js 01: The Panopticon Skybox</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="experiment-page panopticon-page">
+  <main class="panopticon-shell">
+    <nav class="experiment-nav panopticon-nav" aria-label="Site">
+      <a href="../index.html">Back to index</a>
+    </nav>
+
+    <section class="panopticon-hero" aria-labelledby="experiment-title">
+      <p class="index-kicker">Assignment 02 / Three.js 01</p>
+      <h1 id="experiment-title">The Panopticon Skybox</h1>
+      <p>
+        A cube-map room built from six real, situated images of institutional vision,
+        keyed to London's surveillance camera culture: a congestion-charge CCTV mast, a
+        Sentinel-2 satellite pass, a street-level gridlock view, a thermal infrared
+        storefront, a LiDAR point cloud, and a photogrammetry city model. Drag to look
+        around from inside the cube. A reflective lens at the center of the room shows
+        all six feeds stitched across a single curved surface at once.
+      </p>
+    </section>
+
+    <section class="panopticon-studio" aria-label="Interactive Three.js panopticon skybox">
+      <div id="panopticon-canvas" class="panopticon-canvas" aria-label="Panopticon skybox render">
+        <div class="panopticon-hud" aria-hidden="true">
+          <span class="panopticon-hud-rec">&#9679; REC</span>
+          <span id="panopticon-hud-telemetry" class="panopticon-hud-telemetry">YAW 000&deg; / PITCH 000&deg;</span>
+        </div>
+        <p class="panopticon-fallback">
+          Your browser could not start WebGL. Three.js needs a WebGL2-capable browser to
+          render the skybox.
+        </p>
+      </div>
+
+      <aside class="panopticon-panel" aria-label="Surveillance feed controls">
+        <div>
+          <p class="index-kicker">Feed Selector</p>
+          <h2>Snap to a face</h2>
+          <p>
+            Each button rotates the viewer to face one panel of institutional vision.
+            Drag inside the frame any time to look freely, or let the room drift on its own.
+          </p>
+        </div>
+
+        <div class="map-buttons panopticon-buttons" aria-label="Skybox face choices">
+          <button type="button" data-face="pz">CCTV</button>
+          <button type="button" data-face="py">Satellite</button>
+          <button type="button" data-face="nz">Dashcam</button>
+          <button type="button" data-face="ny">Thermal Imaging</button>
+          <button type="button" data-face="px">LiDAR Scan</button>
+          <button type="button" data-face="nx">Photogrammetry Model</button>
+        </div>
+
+        <button type="button" id="panopticon-assemble" class="link-button panopticon-assemble">
+          Release to free look
+        </button>
+
+        <dl class="weave-readout">
+          <div>
+            <dt>Feed</dt>
+            <dd id="panopticon-feed-label">Free look</dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd id="panopticon-feed-status">Drag inside the frame to look around.</dd>
+          </div>
+          <div>
+            <dt>Center</dt>
+            <dd>reflective probe assembling all six feeds</dd>
+          </div>
+        </dl>
+
+        <div>
+          <p class="index-kicker">Image sources</p>
+          <ol id="panopticon-source-list" class="source-list" aria-label="Cube face image sources"></ol>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script type="module" src="three-01.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+[
+  {
+    "face": "pz",
+    "mode": "CCTV",
+    "file": "three-01/cctv-pimlico.jpg",
+    "caption": "Congestion-charge CCTV mast, Pimlico, London",
+    "page": "https://commons.wikimedia.org/wiki/File:CCTV_CC_London_Pimlico.JPG",
+    "author": "Genesis12",
+    "license": "Public domain"
+  },
+  {
+    "face": "py",
+    "mode": "Satellite",
+    "file": "three-01/satellite-sentinel2.jpg",
+    "caption": "London, Copernicus Sentinel-2 overhead pass",
+    "page": "https://commons.wikimedia.org/wiki/File:London_by_Sentinel-2.jpg",
+    "author": "ESA / Copernicus Sentinel-2",
+    "license": "CC BY-SA 3.0 IGO"
+  },
+  {
+    "face": "nz",
+    "mode": "Dashcam",
+    "file": "three-01/dashcam-trafalgar.jpg",
+    "caption": "Street-level gridlock, Trafalgar Square, London",
+    "page": "https://commons.wikimedia.org/wiki/File:Gridlock_at_Trafalgar_Square_-_geograph.org.uk_-_4864080.jpg",
+    "author": "Oliver Dixon",
+    "license": "CC BY-SA 2.0",
+    "note": "A road-level traffic photograph, restyled here with a dashcam HUD overlay — not an actual dashcam recording."
+  },
+  {
+    "face": "ny",
+    "mode": "Thermal Imaging",
+    "file": "three-01/thermal-ivy-covent-garden.jpg",
+    "caption": "The Ivy Brasserie, Covent Garden, London, in thermal infrared",
+    "page": "https://commons.wikimedia.org/wiki/File:The_Ivy_Brasserie,_Covent_Garden,_London,_in_Thermal_Infrared_(27727514635).jpg",
+    "author": "David Skinner",
+    "license": "CC BY 2.0"
+  },
+  {
+    "face": "px",
+    "mode": "LiDAR Scan",
+    "file": "three-01/lidar-sf-intersection.jpg",
+    "caption": "Ouster OS1-64 LiDAR point cloud, Folsom & Dore St, San Francisco",
+    "page": "https://commons.wikimedia.org/wiki/File:Ouster_OS1-64_lidar_point_cloud_of_intersection_of_Folsom_and_Dore_St,_San_Francisco.png",
+    "author": "Daniel L. Lu",
+    "license": "CC BY 4.0",
+    "note": "No open, ready-to-use LiDAR point-cloud image of a London street was found, so a real intersection scan from San Francisco stands in for this face."
+  },
+  {
+    "face": "nx",
+    "mode": "Photogrammetry Model",
+    "file": "three-01/photogrammetry-london-city.jpg",
+    "caption": "Photogrammetry 3D city model of London",
+    "page": "https://commons.wikimedia.org/wiki/File:Photogrammetry_3D_city_model_of_London.jpg",
+    "author": "AccuCities",
+    "license": "CC BY-SA 4.0"
+  }
+]

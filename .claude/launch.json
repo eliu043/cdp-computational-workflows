@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static-site",
+      "runtimeExecutable": "/opt/homebrew/bin/python3",
+      "runtimeArgs": ["/Users/ericliu/Documents/GitHub/cdp-computational-workflows/.claude/serve.py"],
+      "port": 4173,
+      "autoPort": true
+    }
+  ]
+}

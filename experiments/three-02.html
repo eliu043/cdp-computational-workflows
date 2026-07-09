@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three.js 02: Dropout Garden</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="experiment-page pointcloud-page">
+  <main class="pointcloud-shell">
+    <nav class="experiment-nav pointcloud-nav" aria-label="Site">
+      <a href="../index.html">Back to index</a>
+    </nav>
+
+    <section class="pointcloud-hero" aria-labelledby="experiment-title">
+      <p class="index-kicker">Assignment 02 / Three.js 02</p>
+      <h1 id="experiment-title">Dropout Garden</h1>
+      <p>
+        A procedural point cloud built to fail on purpose. The patio and bench resolve into
+        clean, gridded geometry, the kind of surface a scanner (and a real-estate listing)
+        can price. The plants never fully resolve: canopy points thin and fade with the
+        scanner, blossoms only exist in season, and whole branch tips can go missing.
+        Drag to orbit, scroll to zoom.
+      </p>
+    </section>
+
+    <section class="pointcloud-studio" aria-label="Interactive Three.js point-cloud garden">
+      <div id="pointcloud-canvas" class="pointcloud-canvas" aria-label="Procedural point-cloud garden render">
+        <div class="pointcloud-hud" aria-hidden="true">
+          <span id="pointcloud-hud-telemetry" class="pointcloud-hud-telemetry">BLOOM 000% / MODE RAW SCAN</span>
+        </div>
+        <p class="pointcloud-fallback">
+          Your browser could not start WebGL. Three.js needs a WebGL2-capable browser to
+          render the point cloud.
+        </p>
+      </div>
+
+      <aside class="pointcloud-panel" aria-label="Scan mode controls">
+        <div>
+          <p class="index-kicker">Read Mode</p>
+          <h2>How the scanner sees it</h2>
+          <p>
+            Every mode reads the same raw capture. Only what counts as signal changes.
+          </p>
+        </div>
+
+        <div class="map-buttons pointcloud-buttons" aria-label="Scan mode choices">
+          <button type="button" data-mode="raw">Raw Scan</button>
+          <button type="button" data-mode="confidence">Confidence Map</button>
+          <button type="button" data-mode="classified">Classified (Priced)</button>
+        </div>
+
+        <dl class="weave-readout">
+          <div>
+            <dt>Mode</dt>
+            <dd id="pointcloud-mode-label">Raw scan</dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd id="pointcloud-mode-status">Living material thins and fades as capture confidence drops; the cloud never sits still.</dd>
+          </div>
+          <div>
+            <dt>Ground conf.</dt>
+            <dd id="pointcloud-ground-conf">—</dd>
+          </div>
+          <div>
+            <dt>Canopy conf.</dt>
+            <dd id="pointcloud-canopy-conf">—</dd>
+          </div>
+          <div>
+            <dt>Bloom cycle</dt>
+            <dd id="pointcloud-season">—</dd>
+          </div>
+        </dl>
+        <p class="pointcloud-readout-note">
+          Bloom cycle drifts on its own clock, offset per plant, independent of the
+          scanner's pass — the one variable the hardscape never has to answer to.
+        </p>
+      </aside>
+    </section>
+  </main>
+
+  <script type="module" src="three-02.js"></script>
+</body>
+</html>

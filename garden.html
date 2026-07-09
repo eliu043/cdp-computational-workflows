@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garden Review</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="garden-page">
+  <main class="desktop" aria-label="Garden collage desktop">
+    <div class="garden-collage" aria-hidden="true">
+      <div class="garden-photo tile-a"></div>
+      <div class="garden-photo tile-b"></div>
+      <div class="garden-photo tile-c"></div>
+      <div class="paper-strip strip-a"></div>
+      <div class="paper-strip strip-b"></div>
+      <div class="paper-strip strip-c"></div>
+    </div>
+
+    <div class="ascii-garden" aria-hidden="true">
+      <pre class="ascii-plot plot-a">
+        .  ·    .        .          ·
+          _.._        ,;        _.._
+      .-`    `-.   .;:;.    .-`    `-.
+     /  .·  ·.  \  ;:;:;   /  .·  ·.  \
+    ;  ·  /\  ·  ;  `|`   ;  ·  /\  ·  ;
+    |    /  \    |   |    |    /  \    |
+    |  _/____\_  |   |    |  _/____\_  |
+       `  ||  `      |       `  ||  `
+          ||       __|__        ||
+      ~~~ || ~~~  /     \  ~~~ || ~~~
+      </pre>
+
+      <pre class="ascii-plot plot-b">
+   ,       .         *        .       ,
+      .        _.-""""-._          .
+          _.-"`  meadow  `"-._
+    .  .-`   .      .      .  `-.      .
+      /   .     ·       ·       \
+     ;  ·     _   _   _      ·   ;
+     |     . (_) (_) (_)   .     |
+     ;        `   `   `          ;
+      \   ·      whisper      · /
+       `-._   .          .  _.-`
+           `""--..__..--""`
+      </pre>
+
+      <pre class="ascii-plot plot-c">
+            |              |         |
+        .   |   .      .   |    .    |
+       /|\  |  /|\    /|\  |   /|\   |
+      /_|_\ | /_|_\  /_|_\ |  /_|_\  |
+        |   |   |      |   |    |    |
+    ~ ~ | ~ | ~ |  ~ ~ | ~ | ~~ | ~ ~
+        |       |      |        |
+      seed   rain   leaf    sky    soil
+      </pre>
+    </div>
+
+    <section class="window hero-window" data-window style="left: 1vw; top: 1vh;" aria-labelledby="hero-title">
+      <div class="titlebar" data-handle>
+        <button class="box-button" type="button" aria-label="Close window">x</button>
+        <span class="title-lines"></span>
+        <span class="window-title">index.html</span>
+      </div>
+      <div class="window-body hero-body">
+        <p class="tag">&lt;h1&gt;</p>
+        <h1 id="hero-title">garden<br>review</h1>
+        <p class="tag">&lt;/h1&gt;</p>
+      </div>
+    </section>
+
+    <section class="window image-window" data-window style="left: 36vw; top: 24vh;" aria-labelledby="walk-title">
+      <div class="titlebar" data-handle>
+        <button class="box-button" type="button" aria-label="Close window">x</button>
+        <span class="title-lines"></span>
+        <span class="window-title">meadow.gif</span>
+      </div>
+      <div class="window-body media-body">
+        <img src="https://i.guim.co.uk/img/media/354f1e3ae79c005b200814b138c5cc6a07291498/0_359_6048_3629/master/6048.jpg?width=1200&amp;height=1200&amp;quality=85&amp;auto=format&amp;fit=crop&amp;s=bb22bd8823222d7e1cd151054ff46294" alt="Photographic garden with trees, meadow, and sky">
+        <button id="walk-title" class="link-button" type="button">wanna go on a walk with me?</button>
+      </div>
+    </section>
+
+    <section class="window note-window" data-window style="left: 53vw; top: 15vh;" aria-labelledby="note-title">
+      <div class="titlebar" data-handle>
+        <button class="box-button" type="button" aria-label="Close window">x</button>
+        <span class="title-lines"></span>
+        <span class="window-title">welcome</span>
+      </div>
+      <div class="window-body">
+        <h2 id="note-title">hello web user</h2>
+        <p>
+          This is placeholder text inside a draggable window. Move it around.
+          Stack it badly. Let the garden show through the edges.
+        </p>
+      </div>
+    </section>
+
+    <section class="window brutal-window" data-window style="left: 13vw; top: 66vh;" aria-labelledby="field-title">
+      <div class="titlebar" data-handle>
+        <button class="box-button" type="button" aria-label="Close window">x</button>
+        <span class="title-lines"></span>
+        <span class="window-title">field_notes.txt</span>
+      </div>
+      <div class="window-body">
+        <h2 id="field-title">what was that?!</h2>
+        <p>
+          A blunt little website made of garden clippings, browser fragments,
+          hard outlines, and low-resolution weather.
+        </p>
+        <div class="choice-row">
+          <button type="button">it's me</button>
+          <button type="button">this is the web</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="window small-window" data-window style="left: 74vw; top: 58vh;" aria-labelledby="seed-title">
+      <div class="titlebar" data-handle>
+        <button class="box-button" type="button" aria-label="Close window">x</button>
+        <span class="title-lines"></span>
+        <span class="window-title">seed_packet</span>
+      </div>
+      <div class="window-body">
+        <h2 id="seed-title">meadow.exe</h2>
+        <ul>
+          <li>trees</li>
+          <li>noise</li>
+          <li>sky fragments</li>
+          <li>drag handles</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

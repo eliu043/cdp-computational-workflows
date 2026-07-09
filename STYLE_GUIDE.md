@@ -55,6 +55,13 @@ Scrap the street metaphor. The page is now a desktop-like collage: garden backgr
 - Add CSS noise and line texture over the photo so it feels printed and degraded.
 - Image treatment should preserve roughness, visible boundaries, and awkward overlap.
 
+## ASCII Layer
+
+- Add an original ASCII garden layer above the photographic background and below the draggable windows.
+- Keep it non-interactive with `pointer-events: none`.
+- Use pale screened text so it reads like a web-native mist rather than foreground content.
+- The layer should evoke plants, plots, seeds, and weather without copying source artwork directly.
+
 ## Things To Avoid
 
 - Soft rounded cards.

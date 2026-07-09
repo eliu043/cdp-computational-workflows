@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>p5.js 01: Geodata Weaving</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+</head>
+<body class="experiment-page p5-weave-page">
+  <main class="weave-shell">
+    <nav class="experiment-nav weave-nav" aria-label="Site">
+      <a href="../index.html">Back to index</a>
+    </nav>
+
+    <section class="weave-hero" aria-labelledby="experiment-title">
+      <p class="index-kicker">Assignment 02 / p5.js 01</p>
+      <h1 id="experiment-title">Geodata Weaving Map Selector</h1>
+      <p>
+        A first p5.js assignment inspired by Zach Lieberman's dense generative language.
+        Choose a place, drag across the field, and use the mouse wheel to tighten or 
+        loosen the woven map texture.
+      </p>
+    </section>
+
+    <section class="weave-studio" aria-label="Interactive p5.js geodata weaving sketch">
+      <div id="weave-canvas" class="weave-canvas" aria-label="Generative map weaving canvas"></div>
+
+      <aside class="weave-panel" aria-label="Map selector controls">
+        <div>
+          <p class="index-kicker">Map Selector</p>
+          <h2>Pick a source field</h2>
+          <p>
+            Each button swaps the underlying street-grid rhythm, palette pressure, and
+            strand density. A faint generated map sits underneath so the weave still feels
+            shaped by geography.
+          </p>
+        </div>
+
+        <div class="map-buttons" aria-label="Map choices">
+          <button type="button" data-map="manhattan" class="is-active">Manhattan</button>
+          <button type="button" data-map="venice">Venice</button>
+          <button type="button" data-map="tokyo">Tokyo</button>
+          <button type="button" data-map="la">Los Angeles</button>
+        </div>
+
+        <dl class="weave-readout">
+          <div>
+            <dt>Interaction</dt>
+            <dd>drag to disturb strands</dd>
+          </div>
+          <div>
+            <dt>Wheel</dt>
+            <dd>zoom the map and weave</dd>
+          </div>
+          <div>
+            <dt>Key</dt>
+            <dd>press S to save an image</dd>
+          </div>
+        </dl>
+
+        <div class="assignment-brief">
+          <h2>Assignment prompt</h2>
+          <p>
+            Design a map selector that treats place as texture: streets become threads,
+            landmarks become blocks of color, and movement becomes a filter.
+          </p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="p5-01.js"></script>
+</body>
+</html>

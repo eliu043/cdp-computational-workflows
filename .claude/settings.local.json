@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:csiro-robotics.github.io)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(gh api *)",
+      "WebSearch",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "Bash(mkdir -p \"/Users/ericliu/Documents/GitHub/cdp-computational-workflows/experiments/assets/three-01\")",
+      "Bash(curl -sSL -o cctv-pimlico.jpg \"https://upload.wikimedia.org/wikipedia/commons/8/86/CCTV_CC_London_Pimlico.JPG\" -w \"cctv: %{http_code} %{size_download}\\\\n\")",
+      "Bash(curl -sSL -o satellite-sentinel2.jpg \"https://upload.wikimedia.org/wikipedia/commons/4/4a/London_by_Sentinel-2.jpg\" -w \"satellite: %{http_code} %{size_download}\\\\n\")",
+      "Bash(curl -sSL -o dashcam-trafalgar.jpg \"https://upload.wikimedia.org/wikipedia/commons/c/c3/Gridlock_at_Trafalgar_Square_-_geograph.org.uk_-_4864080.jpg\" -w \"dashcam: %{http_code} %{size_download}\\\\n\")",
+      "Bash(curl -sSL -o thermal-ivy-covent-garden.jpg \"https://upload.wikimedia.org/wikipedia/commons/1/14/The_Ivy_Brasserie%2C_Covent_Garden%2C_London%2C_in_Thermal_Infrared_%2827727514635%29.jpg\" -w \"thermal: %{http_code} %{size_download}\\\\n\")",
+      "Bash(python3 /private/tmp/claude-501/-Users-ericliu-Documents-GitHub-cdp-computational-workflows/47e5b8df-3444-4773-ba13-fb14cafcacb5/scratchpad/upload_server.py)",
+      "Bash(pkill -f upload_server.py)"
+    ]
+  }
+}

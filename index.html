@@ -3,97 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Garden Window Study</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Computational Workflows Index</title>
+  <link rel="stylesheet" href="style.css?v=city-glitch-local">
 </head>
-<body>
-  <main class="desktop" aria-label="Garden collage desktop">
-    <div class="garden-collage" aria-hidden="true">
-      <div class="garden-photo tile-a"></div>
-      <div class="garden-photo tile-b"></div>
-      <div class="garden-photo tile-c"></div>
-      <div class="paper-strip strip-a"></div>
-      <div class="paper-strip strip-b"></div>
-      <div class="paper-strip strip-c"></div>
-    </div>
+<body class="index-page">
+  <main class="site-index" aria-labelledby="site-title">
+    <header class="index-header">
+      <p class="index-kicker">Computational Workflows</p>
+      <h1 id="site-title">Assignment Index</h1>
+      <p>
+        A working archive for experiments in vibe coding, applied styles, p5.js sketches,
+        and Three.js studies.
+      </p>
+    </header>
 
-    <section class="window hero-window" data-window style="left: 1vw; top: 1vh;" aria-labelledby="hero-title">
-      <div class="titlebar" data-handle>
-        <button class="box-button" type="button" aria-label="Close window">x</button>
-        <span class="title-lines"></span>
-        <span class="window-title">index.html</span>
-      </div>
-      <div class="window-body hero-body">
-        <p class="tag">&lt;h1&gt;</p>
-        <h1 id="hero-title">garden<br>review</h1>
-        <p class="tag">&lt;/h1&gt;</p>
-      </div>
-    </section>
+    <section class="project-index" aria-label="Projects">
+      <a class="project-row is-live" href="garden.html">
+        <span class="project-meta">Assignment 01</span>
+        <span class="project-title">Garden Review</span>
+        <span class="project-note">Vibe coding, style application, draggable browser fragments.</span>
+        <span class="project-tags" aria-label="Technologies">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+          <span>Draggable UI</span>
+        </span>
+        <span class="project-preview preview-garden" aria-hidden="true">
+          <img src="https://i.guim.co.uk/img/media/354f1e3ae79c005b200814b138c5cc6a07291498/0_359_6048_3629/master/6048.jpg?width=1200&amp;height=1200&amp;quality=85&amp;auto=format&amp;fit=crop&amp;s=bb22bd8823222d7e1cd151054ff46294" alt="">
+          <span>garden.html</span>
+        </span>
+      </a>
 
-    <section class="window image-window" data-window style="left: 36vw; top: 24vh;" aria-labelledby="walk-title">
-      <div class="titlebar" data-handle>
-        <button class="box-button" type="button" aria-label="Close window">x</button>
-        <span class="title-lines"></span>
-        <span class="window-title">meadow.gif</span>
-      </div>
-      <div class="window-body media-body">
-        <img src="https://i.guim.co.uk/img/media/354f1e3ae79c005b200814b138c5cc6a07291498/0_359_6048_3629/master/6048.jpg?width=1200&amp;height=1200&amp;quality=85&amp;auto=format&amp;fit=crop&amp;s=bb22bd8823222d7e1cd151054ff46294" alt="Photographic garden with trees, meadow, and sky">
-        <button id="walk-title" class="link-button" type="button">wanna go on a walk with me?</button>
-      </div>
-    </section>
+      <a class="project-row" href="experiments/p5-01.html">
+        <span class="project-meta">Assignment 02 / p5.js 01</span>
+        <span class="project-title">Geodata Weaving Map Selector</span>
+        <span class="project-note">A p5.js selector that turns imagined map data into woven color, noise, and filters.</span>
+        <span class="project-tags" aria-label="Technologies">
+          <span>p5.js</span>
+          <span>Generative Map</span>
+          <span>Interaction</span>
+        </span>
+        <span class="project-preview preview-p5-a" aria-hidden="true">
+          <img src="experiments/assets/previews/p5-01-geodata-weaving.jpg" alt="">
+          <span>geodata weaving</span>
+        </span>
+      </a>
 
-    <section class="window note-window" data-window style="left: 53vw; top: 15vh;" aria-labelledby="note-title">
-      <div class="titlebar" data-handle>
-        <button class="box-button" type="button" aria-label="Close window">x</button>
-        <span class="title-lines"></span>
-        <span class="window-title">welcome</span>
-      </div>
-      <div class="window-body">
-        <h2 id="note-title">hello web user</h2>
-        <p>
-          This is placeholder text inside a draggable window. Move it around.
-          Stack it badly. Let the garden show through the edges.
-        </p>
-      </div>
-    </section>
+      <a class="project-row" href="experiments/p5-02.html?v=city-glitch-local">
+        <span class="project-meta">Assignment 02 / p5.js 02</span>
+        <span class="project-title">City Signal Glitch</span>
+        <span class="project-note">Open architectural photos pushed through glitch, scanline, and riso-like color systems.</span>
+        <span class="project-tags" aria-label="Technologies">
+          <span>p5.js</span>
+          <span>Glitch</span>
+          <span>Open Photos</span>
+          <span>JavaScript</span>
+        </span>
+        <span class="project-preview preview-p5-b" aria-hidden="true">
+          <img src="experiments/assets/previews/p5-02-city-signal-glitch.jpg" alt="">
+          <span>city signal glitch</span>
+        </span>
+      </a>
 
-    <section class="window brutal-window" data-window style="left: 13vw; top: 66vh;" aria-labelledby="field-title">
-      <div class="titlebar" data-handle>
-        <button class="box-button" type="button" aria-label="Close window">x</button>
-        <span class="title-lines"></span>
-        <span class="window-title">field_notes.txt</span>
-      </div>
-      <div class="window-body">
-        <h2 id="field-title">what was that?!</h2>
-        <p>
-          A blunt little website made of garden clippings, browser fragments,
-          hard outlines, and low-resolution weather.
-        </p>
-        <div class="choice-row">
-          <button type="button">it's me</button>
-          <button type="button">this is the web</button>
-        </div>
-      </div>
-    </section>
+      <a class="project-row" href="experiments/three-01.html">
+        <span class="project-meta">Assignment 02 / Three.js 01</span>
+        <span class="project-title">The Panopticon Skybox</span>
+        <span class="project-note">A cube-map room of six surveillance perspectives, assembled into one reflective probe at its center.</span>
+        <span class="project-tags" aria-label="Technologies">
+          <span>Three.js</span>
+          <span>Cube Camera</span>
+          <span>Shaders</span>
+          <span>Render Targets</span>
+        </span>
+        <span class="project-preview preview-three-a" aria-hidden="true">
+          <img src="experiments/assets/previews/three-01-panopticon-skybox.jpg" alt="">
+          <span>panopticon skybox</span>
+        </span>
+      </a>
 
-    <section class="window small-window" data-window style="left: 74vw; top: 58vh;" aria-labelledby="seed-title">
-      <div class="titlebar" data-handle>
-        <button class="box-button" type="button" aria-label="Close window">x</button>
-        <span class="title-lines"></span>
-        <span class="window-title">seed_packet</span>
-      </div>
-      <div class="window-body">
-        <h2 id="seed-title">meadow.exe</h2>
-        <ul>
-          <li>trees</li>
-          <li>noise</li>
-          <li>sky fragments</li>
-          <li>drag handles</li>
-        </ul>
-      </div>
+      <a class="project-row" href="experiments/three-02.html">
+        <span class="project-meta">Assignment 02 / Three.js 02</span>
+        <span class="project-title">Dropout Garden</span>
+        <span class="project-note">A procedural point-cloud garden that fails to resolve on purpose — canopy points flicker with scan confidence, blossoms exist only in season, and a "Classified" mode deletes everything the scanner can't price.</span>
+        <span class="project-tags" aria-label="Technologies">
+          <span>Three.js</span>
+          <span>Point Cloud</span>
+          <span>Procedural</span>
+          <span>Shaders</span>
+        </span>
+        <span class="project-preview preview-pointcloud" aria-hidden="true">
+          <img src="experiments/assets/previews/three-02-dropout-garden.jpg" alt="">
+          <span>dropout garden</span>
+        </span>
+      </a>
     </section>
   </main>
-
-  <script src="script.js"></script>
 </body>
 </html>

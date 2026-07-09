@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>p5.js 02: City Signal Glitch</title>
+  <link rel="stylesheet" href="../style.css?v=city-glitch-local">
+  <script src="vendor/p5.min.js?v=1.11.3-local"></script>
+</head>
+<body class="experiment-page p5-glitch-page">
+  <main class="glitch-shell">
+    <nav class="experiment-nav glitch-nav" aria-label="Site">
+      <a href="../index.html">Back to index</a>
+    </nav>
+
+    <section class="glitch-hero" aria-labelledby="experiment-title">
+      <p class="index-kicker">Assignment 02 / p5.js 02</p>
+      <h1 id="experiment-title">City Signal Glitch</h1>
+      <p>
+        Fifteen open city photographs become a restless field of risograph-ish color separations,
+        scanline drift, and blocky transmission errors. Move to pan through the image;
+        click to load the next city.
+      </p>
+    </section>
+
+    <section class="glitch-studio" aria-label="Interactive p5.js city glitch sketch">
+      <div id="glitch-canvas" class="glitch-canvas" aria-label="Glitched architectural photography canvas">
+        <img class="glitch-fallback-image" src="assets/01-new-york-flatiron-building.jpg" alt="">
+      </div>
+
+      <aside class="glitch-panel" aria-label="Sketch notes">
+        <div>
+          <p class="index-kicker">Interaction</p>
+          <h2>Pan, pulse, advance</h2>
+          <p>
+            Mouse movement shifts the crop window and changes the registration pressure.
+            Clicking advances through the source photographs.
+          </p>
+        </div>
+
+        <dl class="weave-readout">
+          <div>
+            <dt>Move</dt>
+            <dd>pan across the architecture</dd>
+          </div>
+          <div>
+            <dt>Click</dt>
+            <dd>next open city image</dd>
+          </div>
+          <div>
+            <dt>Key</dt>
+            <dd>press S to save a frame</dd>
+          </div>
+        </dl>
+
+        <div class="assignment-brief">
+          <h2>Open photo sources</h2>
+          <p>
+            This sketch cycles through 15 local Wikimedia Commons images so playback stays
+            reliable while each source remains linked to its open-license record.
+          </p>
+        </div>
+
+        <ol id="glitch-source-list" class="source-list" aria-label="Current image sources"></ol>
+      </aside>
+    </section>
+  </main>
+
+  <script src="p5-02.js?v=native-image-loading"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+[
+  {
+    "city": "New York",
+    "subject": "Flatiron Building",
+    "file": "assets/01-new-york-flatiron-building.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Flatiron_Building,_Fifth_Avenue,_Manhattan,_New_York.jpg",
+    "title": "Flatiron Building, Fifth Avenue, Manhattan, New York.jpg",
+    "artist": "Christian David",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "city": "Chicago",
+    "subject": "Chicago skyline",
+    "file": "assets/02-chicago-chicago-skyline.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicago_Skyline_at_Dusk.jpg",
+    "title": "Chicago Skyline at Dusk.jpg",
+    "artist": "Matthew T Rader",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "city": "Tokyo",
+    "subject": "Shinjuku skyline",
+    "file": "assets/03-tokyo-shinjuku-skyline.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Shinjuku_Skyline_(53416849963).jpg",
+    "title": "Shinjuku Skyline (53416849963).jpg",
+    "artist": "Stephen Kelly from San Francisco, CA, USA",
+    "license": "CC BY 2.0"
+  },
+  {
+    "city": "Hong Kong",
+    "subject": "Victoria Peak skyline",
+    "file": "assets/04-hong-kong-victoria-peak-skyline.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Night_Skyline.jpg",
+    "title": "Hong Kong Night Skyline.jpg",
+    "artist": "Base64, retouched by CarolSpears",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "city": "London",
+    "subject": "City skyline",
+    "file": "assets/05-london-city-skyline.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Canary_Wharf_from_Limehouse_London_June_2016_HDR.jpg",
+    "title": "Canary Wharf from Limehouse London June 2016 HDR.jpg",
+    "artist": "King of Hearts",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "city": "Paris",
+    "subject": "La Defense skyline",
+    "file": "assets/06-paris-la-defense-skyline.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Panorama_La_D%C3%A9fense.jpg",
+    "title": "Panorama La D\u00e9fense.jpg",
+    "artist": "Dimitri Destugues",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "city": "Rotterdam",
+    "subject": "City skyline",
+    "file": "assets/07-rotterdam-city-skyline.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Rotterdam_Rooftop_Walk_2022_with_World_Trade_Center_in_the_Background.jpg",
+    "title": "Rotterdam Rooftop Walk 2022 with World Trade Center in the Background.jpg",
+    "artist": "Spinarak",
+    "license": "CC0"
+  },
+  {
+    "city": "Singapore",
+    "subject": "Marina Bay skyline",
+    "file": "assets/08-singapore-marina-bay-skyline.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Singapore_Marina_Bay_Dusk_2018-02-27.jpg",
+    "title": "Singapore Marina Bay Dusk 2018-02-27.jpg",
+    "artist": "Benh LIEU SONG (Flickr)",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "city": "Shanghai",
+    "subject": "Pudong skyline",
+    "file": "assets/09-shanghai-pudong-skyline.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Shanghai_Skyline_from_a_tour_boat_(Pudong).jpg",
+    "title": "Shanghai Skyline from a tour boat (Pudong).jpg",
+    "artist": "Peter K Burian",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "city": "Sao Paulo",
+    "subject": "City skyline",
+    "file": "assets/10-sao-paulo-city-skyline.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:At_S%C3%A3o_Paulo_2018_249.jpg",
+    "title": "At S\u00e3o Paulo 2018 249.jpg",
+    "artist": "Photograph by Mike Peel (www.mikepeel.net).",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "city": "Mexico City",
+    "subject": "Downtown skyline",
+    "file": "assets/11-mexico-city-downtown-architecture.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Mexico_City_Reforma_skyline_(cropped2).jpg",
+    "title": "Mexico City Reforma skyline (cropped2).jpg",
+    "artist": "Jonathan Salvador",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "city": "Toronto",
+    "subject": "City skyline",
+    "file": "assets/12-toronto-city-skyline.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Toronto_-_ON_-_CN_Tower_bei_Nacht2.jpg",
+    "title": "Toronto - ON - CN Tower bei Nacht2.jpg",
+    "artist": "Wladyslaw, Correction of perspective distortion: Niabot",
+    "license": "CC BY 3.0"
+  },
+  {
+    "city": "Sydney",
+    "subject": "City skyline",
+    "file": "assets/13-sydney-city-skyline.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sydney_(AU),_Skyline_--_2019_--_2287.jpg",
+    "title": "Sydney (AU), Skyline -- 2019 -- 2287.jpg",
+    "artist": "Dietmar Rabich",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "city": "Dubai",
+    "subject": "Downtown skyline",
+    "file": "assets/14-dubai-downtown-skyline.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dubai_skyline_unsplash.jpg",
+    "title": "Dubai skyline unsplash.jpg",
+    "artist": "Robert Bock",
+    "license": "CC0"
+  },
+  {
+    "city": "Berlin",
+    "subject": "City architecture",
+    "file": "assets/15-berlin-city-architecture.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Berlin_Mitte_June_2023_01.jpg",
+    "title": "Berlin Mitte June 2023 01.jpg",
+    "artist": "ArildV",
+    "license": "CC BY-SA 4.0"
+  }
+]
