@@ -993,6 +993,7 @@ body.panopticon-page {
 
 .panopticon-canvas {
   position: relative;
+  height: clamp(520px, 58vw, 720px);
   min-height: 640px;
   overflow: hidden;
   background: #05070a;
@@ -1005,6 +1006,10 @@ body.panopticon-page {
 }
 
 .panopticon-canvas canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   display: block;
   transition: opacity 320ms ease;
 }
@@ -1200,6 +1205,7 @@ body.pointcloud-page {
 
 .pointcloud-canvas {
   position: relative;
+  height: clamp(520px, 58vw, 720px);
   min-height: 640px;
   overflow: hidden;
   background: #0d0f0a;
@@ -1212,6 +1218,10 @@ body.pointcloud-page {
 }
 
 .pointcloud-canvas canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   display: block;
 }
 
@@ -1729,17 +1739,20 @@ body.d3-page {
   .glitch-canvas,
   .panopticon-canvas,
   .pointcloud-canvas {
+    height: 420px;
     min-height: 420px;
   }
 
   .weave-panel,
   .glitch-panel,
-  .panopticon-panel {
+  .panopticon-panel,
+  .pointcloud-panel {
     border-top: var(--rule);
     border-left: 0;
   }
 
-  .panopticon-panel {
+  .panopticon-panel,
+  .pointcloud-panel {
     border-top: 1.5px solid #eef0e8;
   }
 
