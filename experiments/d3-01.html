@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D3.js 01: The Southbound Data Center</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="experiment-page d3-page">
+  <main class="d3-shell">
+    <nav class="experiment-nav d3-nav" aria-label="Site">
+      <a href="../index.html">Back to index</a>
+    </nav>
+
+    <section class="d3-hero" aria-labelledby="experiment-title">
+      <p class="index-kicker">Assignment 03 / D3.js 01</p>
+      <h1 id="experiment-title">The Southbound Data Center</h1>
+      <p>
+        Dallas-Fort Worth is North America's 2nd- or 3rd-largest data center market
+        (reports disagree on the ranking, not the trend), built for two decades on a tight
+        cluster north of downtown: Plano, Richardson, Carrollton, Garland. The next wave is
+        landing somewhere else — Red Oak, Lancaster, Midlothian — chasing cheaper land and
+        open power capacity south of the core. Every bubble below is a real, named facility
+        pulled from a public data center directory. Hover one to read what's actually there.
+      </p>
+    </section>
+
+    <section class="d3-timeline" aria-label="Facility lifecycle timeline control">
+      <p class="index-kicker">
+        Time, as a proxy: no dated history is published per facility, but each one carries a
+        real lifecycle status — planned, then building, then built. Slide through it.
+      </p>
+      <div class="d3-timeline-row">
+        <button type="button" id="d3-stage-play" class="link-button">▶ Play lifecycle</button>
+        <input type="range" id="d3-stage-slider" min="0" max="2" step="1" value="0" aria-label="Facility lifecycle stage">
+        <div class="d3-timeline-ticks" aria-hidden="true">
+          <span>Filed</span>
+          <span>Building</span>
+          <span>Built</span>
+        </div>
+      </div>
+      <div class="d3-timeline-readout">
+        <strong id="d3-stage-label">Filed — Planned / land bank</strong>
+        <span id="d3-stage-stat"></span>
+      </div>
+    </section>
+
+    <section class="d3-studio" aria-label="Interactive D3.js map of DFW data center submarkets">
+      <div id="d3-canvas" class="d3-canvas" aria-label="DFW data center submarket bubble map">
+        <div class="d3-map-caption">
+          Positions are city-center approximations, not parcel addresses. Bubble area
+          &#8776; facilities named at that place, at the selected lifecycle stage.
+        </div>
+      </div>
+
+      <aside class="d3-panel" aria-label="Market data and controls">
+        <div>
+          <p class="index-kicker">Filter</p>
+          <div class="map-buttons" id="d3-filters" aria-label="Submarket group filters">
+            <button type="button" data-group="all" class="is-active">All submarkets</button>
+            <button type="button" data-group="core">North metro core</button>
+            <button type="button" data-group="frontier">Southern frontier</button>
+            <button type="button" data-group="outlier">Far outliers</button>
+          </div>
+        </div>
+
+        <dl class="weave-readout" id="d3-readout">
+          <div>
+            <dt>Place</dt>
+            <dd id="d3-readout-name">Hover a bubble</dd>
+          </div>
+          <div>
+            <dt>Tally</dt>
+            <dd id="d3-readout-count">&mdash;</dd>
+          </div>
+          <div>
+            <dt>Note</dt>
+            <dd id="d3-readout-note">Facility counts are a text tally of named listings, not a certified inventory.</dd>
+          </div>
+        </dl>
+
+        <div>
+          <p class="index-kicker">Market facts</p>
+          <dl class="stat-tiles" id="d3-stat-tiles"></dl>
+        </div>
+
+        <div>
+          <p class="index-kicker">Existing vs. planned, by report</p>
+          <div class="market-compare" id="d3-market-compare"></div>
+        </div>
+
+        <div>
+          <p class="index-kicker">Top operators by operational MW</p>
+          <div class="provider-bars" id="d3-provider-bars"></div>
+        </div>
+
+        <div>
+          <p class="index-kicker">Sources</p>
+          <ol id="d3-source-list" class="source-list" aria-label="Data sources"></ol>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="vendor/d3.min.js"></script>
+  <script src="d3-01-data.js"></script>
+  <script src="d3-01.js"></script>
+</body>
+</html>

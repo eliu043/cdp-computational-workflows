@@ -13,7 +13,10 @@
       "Bash(curl -sSL -o dashcam-trafalgar.jpg \"https://upload.wikimedia.org/wikipedia/commons/c/c3/Gridlock_at_Trafalgar_Square_-_geograph.org.uk_-_4864080.jpg\" -w \"dashcam: %{http_code} %{size_download}\\\\n\")",
       "Bash(curl -sSL -o thermal-ivy-covent-garden.jpg \"https://upload.wikimedia.org/wikipedia/commons/1/14/The_Ivy_Brasserie%2C_Covent_Garden%2C_London%2C_in_Thermal_Infrared_%2827727514635%29.jpg\" -w \"thermal: %{http_code} %{size_download}\\\\n\")",
       "Bash(python3 /private/tmp/claude-501/-Users-ericliu-Documents-GitHub-cdp-computational-workflows/47e5b8df-3444-4773-ba13-fb14cafcacb5/scratchpad/upload_server.py)",
-      "Bash(pkill -f upload_server.py)"
+      "Bash(pkill -f upload_server.py)",
+      "WebFetch(domain:www.dmagazine.com)",
+      "WebFetch(domain:www.cbre.com)",
+      "Bash(curl -sL \"https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js\" -o /Users/ericliu/Documents/GitHub/cdp-computational-workflows/experiments/vendor/d3.min.js)"
     ]
   }
 }
