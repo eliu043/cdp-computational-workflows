@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D3.js 02: An Unfinished Map of Interests</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="experiment-page interest-page">
+  <main class="interest-shell">
+    <nav class="experiment-nav interest-nav" aria-label="Site">
+      <a href="../index.html">Back to index</a>
+    </nav>
+
+    <section class="interest-hero" aria-labelledby="experiment-title">
+      <p class="index-kicker">Assignment 03 / D3.js 02</p>
+      <h1 id="experiment-title">An Unfinished Map of Interests</h1>
+      <p>
+        A first-pass portrait organized across recurring moves, fields, methods,
+        questions, and scales of inquiry. Drag the nodes, follow the shared threads,
+        and treat every connection as something open to revision. Six green currents
+        read across architectural and computational design pedagogies.
+      </p>
+    </section>
+
+    <section class="interest-studio" aria-label="Interactive network of studies and interests">
+      <div id="interest-canvas" class="interest-canvas" tabindex="0" aria-label="Force-directed graph. Drag nodes or select one to inspect its connections.">
+        <div class="interest-instruction">Drag to rearrange · select to trace a thread</div>
+      </div>
+
+      <aside class="interest-panel" aria-label="Graph controls and selected interest">
+        <div>
+          <p class="index-kicker">Follow a recurring move</p>
+          <div id="interest-filters" class="map-buttons interest-buttons" aria-label="Filter graph by recurring move">
+            <button type="button" data-move="all" class="is-active">The whole map</button>
+            <button type="button" data-move="observe">Observe</button>
+            <button type="button" data-move="map">Map</button>
+            <button type="button" data-move="make">Make</button>
+            <button type="button" data-move="question">Question</button>
+          </div>
+        </div>
+
+        <div class="interest-card" aria-live="polite">
+          <p class="index-kicker" id="interest-type">Working premise</p>
+          <h2 id="interest-name">A practice between fields</h2>
+          <p id="interest-description">
+            Select a node to see why it belongs here and which ideas sit beside it.
+          </p>
+          <p class="interest-related"><strong>Connected to:</strong> <span id="interest-related">everything, for now</span></p>
+        </div>
+
+        <div>
+          <p class="index-kicker">Reading the map</p>
+          <ul class="interest-legend">
+            <li><span class="legend-swatch is-move"></span> Recurring moves</li>
+            <li><span class="legend-swatch is-field"></span> Fields of practice</li>
+            <li><span class="legend-swatch is-method"></span> Methods and media</li>
+            <li><span class="legend-swatch is-question"></span> Questions and stakes</li>
+            <li><span class="legend-swatch is-pedagogy"></span> Pedagogical currents</li>
+            <li><span class="legend-swatch is-scale"></span> Scales of inquiry</li>
+          </ul>
+        </div>
+
+        <button type="button" id="interest-reset" class="link-button">Release the map</button>
+
+        <p class="interest-caveat">
+          This is an interpretive draft based on the computational experiments in this
+          site and its pedagogical context—not a fixed taxonomy or complete portrait.
+        </p>
+      </aside>
+    </section>
+  </main>
+
+  <script src="vendor/d3.min.js"></script>
+  <script src="d3-02.js"></script>
+</body>
+</html>
