@@ -99,7 +99,7 @@ const DFW_MARKET_STATS = {
   powerGrowthSince2022: "+62%",
   largestFacility: { name: "Marathon Digital — Granbury, TX", mw: 300 },
   reports: [
-    { source: "JLL, North America Data Center Report (Year-End 2025)", inventoryGW: 1.5, underConstructionMW: 1083, plannedGW: 3.9, rank: "2nd-largest North American market (behind Northern Virginia)" },
+    { source: "JLL, North America Data Center Report (Midyear 2025)", inventoryGW: 1.5, underConstructionMW: 1083, plannedGW: 3.9, rank: "2nd-largest North American market (behind Northern Virginia)" },
     { source: "CBRE, North America Data Center Trends H2 2025", inventoryGW: 1.0, underConstructionMW: 700, plannedGW: 3.0, rank: "3rd market to cross 1 GW (after Northern Virginia and Atlanta)" },
   ],
   topProviders: [
@@ -112,5 +112,5 @@ const DFW_MARKET_STATS = {
 const DFW_SOURCES = [
   { label: "Baxtel — Dallas Colocation & Data Center Market", url: "https://baxtel.com/data-center/dallas" },
   { label: "CBRE — North America Data Center Trends H2 2025 (Dallas-Ft. Worth)", url: "https://www.cbre.com/insights/books/north-america-data-center-trends-h2-2025/dallas-ft-worth-data-center-market" },
-  { label: "JLL — North America Data Center Report, Year-End 2025", url: "https://www.jll.com/en-us/newsroom/jll-north-america-data-center-report-year-end-2025" },
+  { label: "JLL — North America Data Center Report, Midyear 2025", url: "https://www.jll.com/en-us/newsroom/data-center-availability-crisis-deepens-as-vacancy-hits-historic-low" },
 ];

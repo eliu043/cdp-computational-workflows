@@ -1,0 +1,6 @@
+# macOS metadata
+.DS_Store
+**/.DS_Store
+
+# Local Mapbox configuration — never commit your token file
+experiments/mapbox-token.js

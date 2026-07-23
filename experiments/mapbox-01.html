@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapbox 01: Data_Thirst / Current</title>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.26.0/mapbox-gl.css">
+  <link rel="stylesheet" href="../style.css?v=mapbox-01">
+</head>
+<body class="mapbox-page">
+  <main class="infrastructure-atlas" aria-labelledby="mapbox-title">
+    <header class="atlas-header">
+      <a href="../index.html" class="atlas-back">← Index</a>
+      <div>
+        <p class="index-kicker">Assignment 04 / Mapbox 01</p>
+        <h1 id="mapbox-title">Data_Thirst / Current</h1>
+      </div>
+      <p class="atlas-deck">
+        North Texas data centers read against the water bodies and power plants
+        that make large-scale computation possible.
+      </p>
+    </header>
+
+    <section class="atlas-workspace" aria-label="Interactive North Texas infrastructure map">
+      <div class="atlas-map-wrap">
+        <div id="mapbox-map" class="atlas-map" aria-label="Map of North Texas data centers, water, and electricity"></div>
+
+        <div class="atlas-layer-control" aria-label="Map layers">
+          <p>Layers</p>
+          <label><input type="checkbox" data-layer-toggle="data-centers" checked> <span class="layer-swatch swatch-compute"></span> Data centers</label>
+          <label><input type="checkbox" data-layer-toggle="water" checked> <span class="layer-swatch swatch-water"></span> Water bodies</label>
+          <label><input type="checkbox" data-layer-toggle="power" checked> <span class="layer-swatch swatch-power"></span> Power plants</label>
+        </div>
+
+        <div class="atlas-stage-control" aria-label="Data center lifecycle">
+          <span>Lifecycle</span>
+          <div role="group" aria-label="Choose lifecycle stage">
+            <button type="button" data-stage="all" class="is-active">All</button>
+            <button type="button" data-stage="operational">Built</button>
+            <button type="button" data-stage="construction">Building</button>
+            <button type="button" data-stage="planned">Filed</button>
+          </div>
+        </div>
+
+        <p class="atlas-map-note">Circle area represents listing mentions at the selected lifecycle stage. Locations are city-center approximations, not parcels or utility connections.</p>
+
+        <div class="mapbox-token-gate" id="mapbox-token-gate" hidden>
+          <div class="token-card">
+            <p class="index-kicker">Mapbox access token needed</p>
+            <h2>Connect the basemap</h2>
+            <p>Paste a public <code>pk…</code> token. It stays in this browser and is never written to the project.</p>
+            <form id="mapbox-token-form">
+              <label for="mapbox-token-input">Public token</label>
+              <input id="mapbox-token-input" type="password" autocomplete="off" placeholder="pk.eyJ1…" required>
+              <button type="submit">Load map</button>
+            </form>
+            <p class="token-error" id="mapbox-token-error" role="alert"></p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="atlas-panel" aria-label="Map metrics and selected place">
+        <section class="atlas-intro">
+          <p class="index-kicker">A coupled landscape</p>
+          <p>
+            The map does not claim that a reservoir or plant directly serves a campus.
+            Instead, these layers expose proximity: a first sketch of the resource
+            geography behind the metro's computational boom.
+          </p>
+        </section>
+
+        <section class="atlas-metrics" aria-label="Visible map metrics">
+          <div><strong id="metric-facilities">—</strong><span>lifecycle mentions</span></div>
+          <div><strong id="metric-markets">—</strong><span>mapped submarkets</span></div>
+          <div><strong id="metric-power">—</strong><span>GW plant capacity*</span></div>
+          <div><strong id="metric-water">—</strong><span>major water bodies*</span></div>
+        </section>
+
+        <section class="atlas-selection" aria-live="polite">
+          <p class="index-kicker">Selected place</p>
+          <h2 id="selection-name">Dallas–Fort Worth</h2>
+          <p id="selection-type" class="selection-type">Regional overview</p>
+          <dl id="selection-details">
+            <div><dt>Listed facilities</dt><dd id="selection-count">276 market-wide</dd></div>
+            <div><dt>Lifecycle</dt><dd id="selection-stage">All public listings</dd></div>
+            <div><dt>Nearest water</dt><dd id="selection-water">Select a data center submarket</dd></div>
+            <div><dt>Nearest plant</dt><dd id="selection-power">Select a data center submarket</dd></div>
+          </dl>
+          <p id="selection-note" class="selection-note">Click a symbol to inspect the local relationship among compute, water, and electricity.</p>
+        </section>
+
+        <section class="atlas-scale">
+          <div class="pressure-heading">
+            <p class="index-kicker">Market pressure</p>
+            <span>Colocation power capacity</span>
+          </div>
+          <div class="pressure-axis" aria-hidden="true">
+            <span>0</span><span>1</span><span>2</span><span>3</span><span>4 GW</span>
+          </div>
+
+          <div class="pressure-group">
+            <h3>Existing inventory</h3>
+            <div class="pressure-source-row"><span><i class="source-key is-cbre"></i>CBRE · H2 2025</span><b>1.0 GW</b></div>
+            <div class="pressure-track" role="img" aria-label="CBRE H2 2025 existing inventory: 1.0 gigawatt on a 0 to 4 gigawatt scale"><i class="pressure-bar is-cbre" style="--value:25%"></i></div>
+            <div class="pressure-source-row"><span><i class="source-key is-jll"></i>JLL · Midyear 2025</span><b>1.5 GW</b></div>
+            <div class="pressure-track" role="img" aria-label="JLL Midyear 2025 existing inventory: 1.5 gigawatts on a 0 to 4 gigawatt scale"><i class="pressure-bar is-jll" style="--value:37.5%"></i></div>
+          </div>
+
+          <div class="pressure-group">
+            <h3>Under construction</h3>
+            <div class="pressure-source-row"><span><i class="source-key is-cbre"></i>CBRE · H2 2025</span><b>0.70 GW</b></div>
+            <div class="pressure-track" role="img" aria-label="CBRE H2 2025 capacity under construction: 0.70 gigawatts on a 0 to 4 gigawatt scale"><i class="pressure-bar is-cbre" style="--value:17.5%"></i></div>
+            <div class="pressure-source-row"><span><i class="source-key is-jll"></i>JLL · Midyear 2025</span><b>1.083 GW</b></div>
+            <div class="pressure-track" role="img" aria-label="JLL Midyear 2025 capacity under construction: 1.083 gigawatts on a 0 to 4 gigawatt scale"><i class="pressure-bar is-jll" style="--value:27.075%"></i></div>
+          </div>
+
+          <div class="pressure-group">
+            <h3>Planned pipeline</h3>
+            <div class="pressure-source-row"><span><i class="source-key is-cbre"></i>CBRE · H2 2025</span><b>3.0 GW</b></div>
+            <div class="pressure-track" role="img" aria-label="CBRE H2 2025 planned pipeline: 3.0 gigawatts on a 0 to 4 gigawatt scale"><i class="pressure-bar is-cbre" style="--value:75%"></i></div>
+            <div class="pressure-source-row"><span><i class="source-key is-jll"></i>JLL · Midyear 2025</span><b>3.9 GW</b></div>
+            <div class="pressure-track" role="img" aria-label="JLL Midyear 2025 planned pipeline: 3.9 gigawatts on a 0 to 4 gigawatt scale"><i class="pressure-bar is-jll" style="--value:97.5%"></i></div>
+          </div>
+
+          <p class="pressure-note">Shared 0–4 GW scale. Values are separate report estimates, not a confidence range. Planned capacity is proposed and may not be delivered.</p>
+        </section>
+
+        <footer class="atlas-sources">
+          <p>*Context layers are selected regional features, not complete utility inventories. Capacities are approximate nameplate MW.</p>
+          <details>
+            <summary>Sources + method</summary>
+            <ol id="atlas-source-list"></ol>
+          </details>
+        </footer>
+      </aside>
+    </section>
+  </main>
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.26.0/mapbox-gl.js"></script>
+  <script src="d3-01-data.js"></script>
+  <script src="mapbox-01-data.js"></script>
+  <script src="mapbox-token.js"></script>
+  <script src="mapbox-01.js"></script>
+</body>
+</html>
