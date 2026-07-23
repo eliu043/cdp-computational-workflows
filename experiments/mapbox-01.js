@@ -117,13 +117,13 @@ function applyStage(stage) {
   activeStage = stage;
   stageButtons.forEach((button) => button.classList.toggle("is-active", button.dataset.stage === stage));
   updateMetrics();
-  if (!atlasMap || !atlasMap.getLayer("data-centers")) return;
+  if (!atlasMap || !atlasMap.getLayer("atlas-data-centers")) return;
   const value = stageValueExpression(stage);
-  atlasMap.setPaintProperty("data-centers", "circle-radius", ["interpolate", ["linear"], ["sqrt", value], 0, 0, 1, 6, 9, 16]);
-  atlasMap.setPaintProperty("data-center-halos", "circle-radius", ["interpolate", ["linear"], ["sqrt", value], 0, 0, 1, 12, 9, 38]);
-  atlasMap.setFilter("data-centers", [">", value, 0]);
-  atlasMap.setFilter("data-center-halos", [">", value, 0]);
-  atlasMap.setFilter("data-center-labels", [">", value, 0]);
+  atlasMap.setPaintProperty("atlas-data-centers", "circle-radius", ["interpolate", ["linear"], ["sqrt", value], 0, 0, 1, 6, 9, 16]);
+  atlasMap.setPaintProperty("atlas-data-center-halos", "circle-radius", ["interpolate", ["linear"], ["sqrt", value], 0, 0, 1, 12, 9, 38]);
+  atlasMap.setFilter("atlas-data-centers", [">", value, 0]);
+  atlasMap.setFilter("atlas-data-center-halos", [">", value, 0]);
+  atlasMap.setFilter("atlas-data-center-labels", [">", value, 0]);
 }
 
 function addAtlasLayers() {
@@ -131,28 +131,58 @@ function addAtlasLayers() {
   atlasMap.addSource("power-context", { type: "geojson", data: powerGeoJSON });
   atlasMap.addSource("data-center-context", { type: "geojson", data: dataCenterGeoJSON });
 
-  atlasMap.addLayer({ id: "water-halos", type: "circle", source: "water-context", paint: { "circle-radius": 18, "circle-color": "#41b7d8", "circle-opacity": 0.16 } });
-  atlasMap.addLayer({ id: "water", type: "circle", source: "water-context", paint: { "circle-radius": 6, "circle-color": "#8ce6ff", "circle-stroke-color": "#081a1f", "circle-stroke-width": 1.5 } });
-  atlasMap.addLayer({ id: "water-labels", type: "symbol", source: "water-context", layout: { "text-field": ["get", "name"], "text-size": 10, "text-offset": [0, 1.35], "text-anchor": "top", "text-allow-overlap": false }, paint: { "text-color": "#b9f2ff", "text-halo-color": "#101816", "text-halo-width": 1.5 } });
+  atlasMap.addLayer({ id: "atlas-water-halos", type: "circle", source: "water-context", paint: { "circle-radius": 18, "circle-color": "#41b7d8", "circle-opacity": 0.16 } });
+  atlasMap.addLayer({ id: "atlas-water", type: "circle", source: "water-context", paint: { "circle-radius": 6, "circle-color": "#8ce6ff", "circle-stroke-color": "#081a1f", "circle-stroke-width": 1.5 } });
+  atlasMap.addLayer({ id: "atlas-water-labels", type: "symbol", source: "water-context", layout: { "text-field": ["get", "name"], "text-size": 10, "text-offset": [0, 1.35], "text-anchor": "top", "text-allow-overlap": false }, paint: { "text-color": "#b9f2ff", "text-halo-color": "#101816", "text-halo-width": 1.5 } });
 
-  atlasMap.addLayer({ id: "power", type: "circle", source: "power-context", paint: { "circle-radius": ["interpolate", ["linear"], ["get", "capacityMW"], 200, 6, 2500, 12], "circle-color": "#ffcc45", "circle-stroke-color": "#171309", "circle-stroke-width": 2 } });
-  atlasMap.addLayer({ id: "power-labels", type: "symbol", source: "power-context", layout: { "text-field": ["get", "name"], "text-size": 10, "text-offset": [0, 1.45], "text-anchor": "top" }, paint: { "text-color": "#ffeaa4", "text-halo-color": "#101816", "text-halo-width": 1.5 } });
+  atlasMap.addLayer({ id: "atlas-power", type: "circle", source: "power-context", paint: { "circle-radius": ["interpolate", ["linear"], ["get", "capacityMW"], 200, 6, 2500, 12], "circle-color": "#ffcc45", "circle-stroke-color": "#171309", "circle-stroke-width": 2 } });
+  atlasMap.addLayer({ id: "atlas-power-labels", type: "symbol", source: "power-context", layout: { "text-field": ["get", "name"], "text-size": 10, "text-offset": [0, 1.45], "text-anchor": "top" }, paint: { "text-color": "#ffeaa4", "text-halo-color": "#101816", "text-halo-width": 1.5 } });
 
-  atlasMap.addLayer({ id: "data-center-halos", type: "circle", source: "data-center-context", paint: { "circle-radius": ["interpolate", ["linear"], ["sqrt", ["get", "total"]], 1, 12, 9, 38], "circle-color": "#ff583d", "circle-opacity": 0.11 } });
-  atlasMap.addLayer({ id: "data-centers", type: "circle", source: "data-center-context", paint: { "circle-radius": ["interpolate", ["linear"], ["sqrt", ["get", "total"]], 0, 0, 1, 6, 9, 16], "circle-color": ["match", ["get", "group"], "frontier", "#ff583d", "outlier", "#b38bff", "#f1f4e8"], "circle-opacity": 0.9, "circle-stroke-color": "#101816", "circle-stroke-width": 2 } });
-  atlasMap.addLayer({ id: "data-center-labels", type: "symbol", source: "data-center-context", minzoom: 7, layout: { "text-field": ["get", "name"], "text-size": 11, "text-offset": [0, -1.45], "text-anchor": "bottom", "text-max-width": 12 }, paint: { "text-color": "#f4f6ee", "text-halo-color": "#101816", "text-halo-width": 1.7 } });
+  atlasMap.addLayer({ id: "atlas-data-center-halos", type: "circle", source: "data-center-context", paint: { "circle-radius": ["interpolate", ["linear"], ["sqrt", ["get", "total"]], 1, 12, 9, 38], "circle-color": "#ff583d", "circle-opacity": 0.11 } });
+  atlasMap.addLayer({ id: "atlas-data-centers", type: "circle", source: "data-center-context", paint: { "circle-radius": ["interpolate", ["linear"], ["sqrt", ["get", "total"]], 0, 0, 1, 6, 9, 16], "circle-color": ["match", ["get", "group"], "frontier", "#ff583d", "outlier", "#b38bff", "#f1f4e8"], "circle-opacity": 0.9, "circle-stroke-color": "#101816", "circle-stroke-width": 2 } });
+  atlasMap.addLayer({ id: "atlas-data-center-labels", type: "symbol", source: "data-center-context", minzoom: 7, layout: { "text-field": ["get", "name"], "text-size": 11, "text-offset": [0, -1.45], "text-anchor": "bottom", "text-max-width": 12 }, paint: { "text-color": "#f4f6ee", "text-halo-color": "#101816", "text-halo-width": 1.7 } });
 
-  ["data-centers", "water", "power"].forEach((layer) => {
-    atlasMap.on("mouseenter", layer, () => { atlasMap.getCanvas().style.cursor = "pointer"; });
-    atlasMap.on("mouseleave", layer, () => { atlasMap.getCanvas().style.cursor = ""; });
-    atlasMap.on("click", layer, (event) => setSelection(event.features[0], layer));
+  [
+    { id: "atlas-data-centers", kind: "data-centers" },
+    { id: "atlas-water", kind: "water" },
+    { id: "atlas-power", kind: "power" },
+  ].forEach(({ id, kind }) => {
+    atlasMap.on("mouseenter", id, () => { atlasMap.getCanvas().style.cursor = "pointer"; });
+    atlasMap.on("mouseleave", id, () => { atlasMap.getCanvas().style.cursor = ""; });
+    atlasMap.on("click", id, (event) => setSelection(event.features[0], kind));
   });
   applyStage(activeStage);
 }
 
-function initializeMap(token) {
-  mapboxgl.accessToken = token;
+function showTokenError(message) {
+  tokenGate.hidden = false;
+  tokenError.textContent = message;
+}
+
+async function initializeMap(token) {
   tokenGate.hidden = true;
+  tokenError.textContent = "";
+
+  try {
+    const styleCheck = await fetch(
+      `https://api.mapbox.com/styles/v1/mapbox/dark-v11?access_token=${encodeURIComponent(token)}`,
+      { referrerPolicy: "strict-origin" }
+    );
+
+    if (!styleCheck.ok) {
+      if (styleCheck.status === 401 || styleCheck.status === 403) {
+        showTokenError(`Mapbox rejected this token (${styleCheck.status}). Check its public scopes and allowed URLs.`);
+      } else {
+        showTokenError(`Mapbox could not load the basemap (${styleCheck.status}). Please try again.`);
+      }
+      return;
+    }
+  } catch (error) {
+    showTokenError("Mapbox could not be reached. Check your connection and try again.");
+    return;
+  }
+
+  mapboxgl.accessToken = token;
   atlasMap = new mapboxgl.Map({
     container: "mapbox-map",
     style: "mapbox://styles/mapbox/dark-v11",
@@ -165,21 +195,13 @@ function initializeMap(token) {
   atlasMap.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "bottom-left");
   atlasMap.addControl(new mapboxgl.AttributionControl({ compact: true }), "bottom-right");
   atlasMap.on("load", addAtlasLayers);
-  atlasMap.on("error", (event) => {
-    const status = event?.error?.status;
-    if (status === 401 || status === 403) {
-      tokenGate.hidden = false;
-      tokenError.textContent = "That token was rejected. Check that it is a public Mapbox token and try again.";
-      localStorage.removeItem(TOKEN_STORAGE_KEY);
-    }
-  });
 }
 
 document.querySelectorAll("[data-layer-toggle]").forEach((input) => {
   input.addEventListener("change", () => {
     if (!atlasMap) return;
     const group = input.dataset.layerToggle;
-    const layerIds = group === "data-centers" ? ["data-center-halos", "data-centers", "data-center-labels"] : group === "water" ? ["water-halos", "water", "water-labels"] : ["power", "power-labels"];
+    const layerIds = group === "data-centers" ? ["atlas-data-center-halos", "atlas-data-centers", "atlas-data-center-labels"] : group === "water" ? ["atlas-water-halos", "atlas-water", "atlas-water-labels"] : ["atlas-power", "atlas-power-labels"];
     layerIds.forEach((id) => { if (atlasMap.getLayer(id)) atlasMap.setLayoutProperty(id, "visibility", input.checked ? "visible" : "none"); });
   });
 });
