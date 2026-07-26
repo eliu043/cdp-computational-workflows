@@ -12,8 +12,18 @@ Before the poll can collect votes:
 1. Open the Firebase console and create a Firestore database for the project.
 2. In **Firestore Database → Rules**, paste the contents of `firestore.rules`
    and publish them.
-3. Serve the project over HTTP rather than opening `poll.html` directly as a
+3. Copy `firebase-config.example.js` to `firebase-config.js` and add the
+   Firebase web API key. This local configuration file is excluded from Git.
+4. Serve the project over HTTP rather than opening `poll.html` directly as a
    local file.
+
+Firebase web API keys are public project identifiers and remain visible to a
+visitor's browser even when they are supplied through an environment variable
+or generated configuration file. Protect the project with Firestore Security
+Rules, restrict the key to the Firebase APIs and approved web origins in Google
+Cloud, and enable Firebase App Check before public use. A deployment must
+generate or copy `firebase-config.js` into the published site without committing
+it to the repository.
 
 The rules permit public reading and creation of valid votes for this poll, while
 blocking edits and deletions. The browser stores a random voter identifier and

@@ -13,16 +13,7 @@ import {
   setDoc,
   where,
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAv18pU76-ldEhaR9-AD3U-eC-pTEXlCg4",
-  authDomain: "test-75144.firebaseapp.com",
-  projectId: "test-75144",
-  storageBucket: "test-75144.firebasestorage.app",
-  messagingSenderId: "546839554197",
-  appId: "1:546839554197:web:f7617becd912a3db32939c",
-  measurementId: "G-TF90GVMKLD",
-};
+import { firebaseConfig } from "./firebase-config.js";
 
 const POLL_ID = "next-computational-experiment";
 const VALID_OPTIONS = [
