@@ -1,6 +1,25 @@
 # Introduction to building a website
 ## HTML, CSS and JavaScript
 
+## Live Firebase poll
+
+The project includes a live poll at `poll.html`. It uses Cloud Firestore in the
+`test-75144` Firebase project to store anonymous vote documents and subscribe to
+result changes in real time.
+
+Before the poll can collect votes:
+
+1. Open the Firebase console and create a Firestore database for the project.
+2. In **Firestore Database → Rules**, paste the contents of `firestore.rules`
+   and publish them.
+3. Serve the project over HTTP rather than opening `poll.html` directly as a
+   local file.
+
+The rules permit public reading and creation of valid votes for this poll, while
+blocking edits and deletions. The browser stores a random voter identifier and
+the selected response locally to prevent casual repeat voting. For a
+high-stakes or public poll, add Firebase Authentication and App Check.
+
 Welcome to the world of web development! This tutorial will teach you the fundamentals of building websites using the three core technologies: HTML, CSS, and JavaScript. We'll learn how these languages work together to create modern, interactive websites.
 
 ---

@@ -1,0 +1,26 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /pollVotes/{voteId} {
+      allow read: if true;
+
+      allow create: if
+        request.resource.data.keys().hasOnly([
+          'pollId',
+          'option',
+          'createdAt'
+        ]) &&
+        request.resource.data.pollId == 'next-computational-experiment' &&
+        request.resource.data.option in [
+          'generative-cities',
+          'climate-cartographies',
+          'machine-vision',
+          'collective-interfaces'
+        ] &&
+        request.resource.data.createdAt == request.time;
+
+      allow update, delete: if false;
+    }
+  }
+}

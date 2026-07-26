@@ -640,6 +640,41 @@ li + li {
   background: #101816;
 }
 
+.preview-poll {
+  display: grid;
+  align-content: space-between;
+  min-height: 150px;
+  background: #f5f0e8;
+  color: #18231f;
+  font-family: "Courier New", monospace;
+}
+
+.preview-poll::before {
+  content: "";
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ff5a36;
+}
+
+.preview-poll span {
+  max-width: 9em;
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.preview-poll b {
+  color: #245e49;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+}
+
 .preview-map-grid {
   position: absolute;
   inset: 12% 24% 12% 5%;

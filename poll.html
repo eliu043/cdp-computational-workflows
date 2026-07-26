@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f0e8">
+    <meta
+      name="description"
+      content="A live community poll about the next computational workflow to explore."
+    >
+    <title>Open Question — Live Poll</title>
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="poll.css">
+  </head>
+  <body>
+    <main class="poll-shell">
+      <nav class="topbar" aria-label="Page navigation">
+        <a class="brand" href="index.html" aria-label="Back to Computational Workflows">
+          <span class="brand-mark" aria-hidden="true"></span>
+          CW / OPEN QUESTION
+        </a>
+        <span class="live-label">
+          <span class="live-dot" aria-hidden="true"></span>
+          Live results
+        </span>
+      </nav>
+
+      <section class="poll-layout" aria-labelledby="poll-question">
+        <header class="intro">
+          <p class="eyebrow">Community pulse · 01</p>
+          <h1 id="poll-question">What should we explore next?</h1>
+          <p class="lede">
+            Choose the direction you would most like to see become the next
+            computational experiment.
+          </p>
+          <div class="total-block" aria-live="polite">
+            <strong id="total-count">—</strong>
+            <span id="total-label">votes recorded</span>
+          </div>
+        </header>
+
+        <section class="ballot" aria-label="Poll choices">
+          <div id="poll-options" class="options">
+            <button class="poll-option" type="button" data-option="generative-cities">
+              <span class="option-index">A</span>
+              <span class="option-copy">
+                <strong>Generative cities</strong>
+                <small>Procedural form, growth, and urban systems</small>
+              </span>
+              <span class="option-result">
+                <span class="option-percent">0%</span>
+                <span class="result-track" aria-hidden="true">
+                  <span class="result-fill"></span>
+                </span>
+              </span>
+            </button>
+
+            <button class="poll-option" type="button" data-option="climate-cartographies">
+              <span class="option-index">B</span>
+              <span class="option-copy">
+                <strong>Climate cartographies</strong>
+                <small>Mapping heat, water, risk, and adaptation</small>
+              </span>
+              <span class="option-result">
+                <span class="option-percent">0%</span>
+                <span class="result-track" aria-hidden="true">
+                  <span class="result-fill"></span>
+                </span>
+              </span>
+            </button>
+
+            <button class="poll-option" type="button" data-option="machine-vision">
+              <span class="option-index">C</span>
+              <span class="option-copy">
+                <strong>Machine vision</strong>
+                <small>Seeing space through sensors and models</small>
+              </span>
+              <span class="option-result">
+                <span class="option-percent">0%</span>
+                <span class="result-track" aria-hidden="true">
+                  <span class="result-fill"></span>
+                </span>
+              </span>
+            </button>
+
+            <button class="poll-option" type="button" data-option="collective-interfaces">
+              <span class="option-index">D</span>
+              <span class="option-copy">
+                <strong>Collective interfaces</strong>
+                <small>Tools for participation and shared decisions</small>
+              </span>
+              <span class="option-result">
+                <span class="option-percent">0%</span>
+                <span class="result-track" aria-hidden="true">
+                  <span class="result-fill"></span>
+                </span>
+              </span>
+            </button>
+          </div>
+
+          <div class="poll-footer">
+            <p id="poll-status" class="status" role="status" aria-live="polite">
+              Connecting to the live poll…
+            </p>
+            <p class="privacy-note">Anonymous · one response per browser</p>
+          </div>
+        </section>
+      </section>
+
+      <aside class="future-note" aria-labelledby="future-note-title">
+        <p class="eyebrow">Future application</p>
+        <div>
+          <h2 id="future-note-title">Using polls in future projects</h2>
+          <p>
+            This approach could support participatory design projects by collecting
+            community priorities before a proposal is developed. Live polls could
+            help compare design directions, gather feedback during an exhibition,
+            or let residents identify which issues, places, or resources deserve
+            closer study. Because responses are stored as structured data, the
+            results could also feed maps, visualizations, or later stages of a
+            research workflow.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <script type="module" src="poll.js"></script>
+  </body>
+</html>
