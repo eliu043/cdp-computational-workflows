@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenAI Hello World</title>
+  <style>
+    :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+    body { margin: 0; min-height: 100vh; padding: 2rem 0; background: #f4f6f8; color: #18202a; }
+    main { box-sizing: border-box; width: min(42rem, calc(100% - 2rem)); margin: 0 auto; padding: 2rem; border-radius: 1rem; background: white; box-shadow: 0 1rem 3rem #10203018; }
+    h1 { margin-top: 0; }
+    h2 { margin-top: 2.5rem; }
+    label { display: block; margin-top: 1rem; font-weight: 650; }
+    textarea, button { box-sizing: border-box; width: 100%; margin-top: .4rem; padding: .8rem; font: inherit; border: 1px solid #bdc7d3; border-radius: .55rem; }
+    textarea { min-height: 7rem; resize: vertical; }
+    button { margin-top: 1rem; border: 0; background: #1267d6; color: white; font-weight: 700; cursor: pointer; }
+    button:disabled { opacity: .55; cursor: wait; }
+    #output { min-height: 3rem; margin-top: 1rem; padding: 1rem; border-radius: .55rem; background: #eef2f6; white-space: pre-wrap; }
+    .note { font-size: .9rem; color: #536273; }
+    .context { margin-top: 2.5rem; padding-top: .25rem; border-top: 1px solid #d9e0e7; }
+    .context article { margin-top: 1.5rem; }
+    .context h3 { margin-bottom: .35rem; }
+    .context p { margin-top: 0; line-height: 1.6; }
+    a { color: #1267d6; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #111820; color: #ecf2f8; }
+      main { background: #1a2530; }
+      textarea { background: #111820; color: inherit; border-color: #506070; }
+      #output { background: #111820; }
+      .note { color: #b5c0cc; }
+      .context { border-color: #3b4a58; }
+      a { color: #7db5ff; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p><a href="index.html">&larr; Back to exercises</a></p>
+    <h1>OpenAI Hello World</h1>
+    <p>Send one prompt to the OpenAI Responses API.</p>
+
+    <label for="user-input">Message</label>
+    <textarea id="user-input" placeholder="Say hello in three languages."></textarea>
+    <button id="send-btn" type="button">Send</button>
+    <div id="output" role="status" aria-live="polite">The response will appear here.</div>
+    <p class="note">Requests pass through a Firebase Cloud Function. The OpenAI API key is never sent to this page.</p>
+
+    <section class="context" aria-labelledby="context-title">
+      <h2 id="context-title">Chatbot as a design project</h2>
+
+      <article>
+        <h3>What role does it play?</h3>
+        <p>
+          In this prototype, the chatbot is an interface for inquiry. It turns a visitor's
+          question into a direct exchange with a language model, making the prompt, wait,
+          response, and possible failure visible. As the project develops, that role could
+          become more specific: a guide to the project's research, a way to explore its data,
+          or a conversational layer for explaining methods and design decisions. Its value
+          should come from that defined context—not simply from adding a chat box.
+        </p>
+      </article>
+
+    </section>
+  </main>
+  <script type="module" src="openai-hello-world.js"></script>
+</body>
+</html>

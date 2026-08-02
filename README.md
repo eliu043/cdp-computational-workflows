@@ -30,6 +30,24 @@ blocking edits and deletions. The browser stores a random voter identifier and
 the selected response locally to prevent casual repeat voting. For a
 high-stakes or public poll, add Firebase Authentication and App Check.
 
+## Secure OpenAI exercise
+
+`openai-hello-world.html` calls the `askOpenAI` Firebase Cloud Function rather
+than sending an OpenAI API key to the browser. The function reads
+`OPENAI_API_KEY` from Google Cloud Secret Manager.
+
+Set the secret and deploy the function with the Firebase CLI:
+
+```sh
+firebase functions:secrets:set OPENAI_API_KEY
+firebase deploy --only functions:askOpenAI
+```
+
+Serve the website over HTTP so the browser can load the Firebase modules and
+the local `firebase-config.js` module. Before making the endpoint public, enable
+Firebase App Check or Authentication and configure OpenAI project spending
+limits to reduce abuse.
+
 Welcome to the world of web development! This tutorial will teach you the fundamentals of building websites using the three core technologies: HTML, CSS, and JavaScript. We'll learn how these languages work together to create modern, interactive websites.
 
 ---

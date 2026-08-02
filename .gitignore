@@ -4,3 +4,8 @@
 
 # Local Firebase web configuration (copy from firebase-config.example.js)
 firebase-config.js
+
+# Firebase Functions dependencies and local emulator secrets
+functions/node_modules/
+functions/.secret.local
+.pnpm-store/
