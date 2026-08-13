@@ -30,11 +30,21 @@ blocking edits and deletions. The browser stores a random voter identifier and
 the selected response locally to prevent casual repeat voting. For a
 high-stakes or public poll, add Firebase Authentication and App Check.
 
-## Secure OpenAI exercise
+## Critical Friend agent study
 
-`openai-hello-world.html` calls the `askOpenAI` Firebase Cloud Function rather
-than sending an OpenAI API key to the browser. The function reads
-`OPENAI_API_KEY` from Google Cloud Secret Manager.
+`openai-hello-world.html` is a critique-centered agent interface. A visitor
+submits an artifact, states its intent, and chooses a critical lens. The agent
+returns a structured critique that separates evidence from interpretation,
+offers a counter-reading, and makes its own limits visible. Follow-up actions
+let the visitor deepen or challenge the reading without treating the model as
+a final authority.
+
+The page calls the `askOpenAI` Firebase Cloud Function rather than sending an
+OpenAI API key to the browser. The function reads `OPENAI_API_KEY` from Google
+Cloud Secret Manager and uses Structured Outputs so the interface can render
+the critique as a ledger instead of a chat transcript. Follow-up turns use a
+stored response ID; OpenAI response objects are retained for up to 30 days by
+default, so the interface warns visitors not to submit confidential material.
 
 Set the secret and deploy the function with the Firebase CLI:
 

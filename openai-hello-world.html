@@ -3,65 +3,417 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OpenAI Hello World</title>
+  <meta name="description" content="A critique-centered agent for examining creative and computational work.">
+  <title>Critical Friend — Agent Study</title>
   <style>
-    :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
-    body { margin: 0; min-height: 100vh; padding: 2rem 0; background: #f4f6f8; color: #18202a; }
-    main { box-sizing: border-box; width: min(42rem, calc(100% - 2rem)); margin: 0 auto; padding: 2rem; border-radius: 1rem; background: white; box-shadow: 0 1rem 3rem #10203018; }
-    h1 { margin-top: 0; }
-    h2 { margin-top: 2.5rem; }
-    label { display: block; margin-top: 1rem; font-weight: 650; }
-    textarea, button { box-sizing: border-box; width: 100%; margin-top: .4rem; padding: .8rem; font: inherit; border: 1px solid #bdc7d3; border-radius: .55rem; }
-    textarea { min-height: 7rem; resize: vertical; }
-    button { margin-top: 1rem; border: 0; background: #1267d6; color: white; font-weight: 700; cursor: pointer; }
-    button:disabled { opacity: .55; cursor: wait; }
-    #output { min-height: 3rem; margin-top: 1rem; padding: 1rem; border-radius: .55rem; background: #eef2f6; white-space: pre-wrap; }
-    .note { font-size: .9rem; color: #536273; }
-    .context { margin-top: 2.5rem; padding-top: .25rem; border-top: 1px solid #d9e0e7; }
-    .context article { margin-top: 1.5rem; }
-    .context h3 { margin-bottom: .35rem; }
-    .context p { margin-top: 0; line-height: 1.6; }
-    a { color: #1267d6; }
-    @media (prefers-color-scheme: dark) {
-      body { background: #111820; color: #ecf2f8; }
-      main { background: #1a2530; }
-      textarea { background: #111820; color: inherit; border-color: #506070; }
-      #output { background: #111820; }
-      .note { color: #b5c0cc; }
-      .context { border-color: #3b4a58; }
-      a { color: #7db5ff; }
+    :root {
+      color-scheme: light;
+      --ink: #171714;
+      --paper: #f2f0e8;
+      --panel: #fbfaf5;
+      --acid: #e9ed73;
+      --blue: #b9dce2;
+      --muted: #66665e;
+      --line: 1.5px solid var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(23, 23, 20, .045) 1px, transparent 1px) 0 0 / 36px 36px,
+        linear-gradient(rgba(23, 23, 20, .045) 1px, transparent 1px) 0 0 / 36px 36px,
+        var(--paper);
+      color: var(--ink);
+    }
+
+    button, input, textarea { font: inherit; }
+    button { color: inherit; }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .8rem clamp(1rem, 3vw, 2.5rem);
+      border-bottom: var(--line);
+      background: var(--acid);
+      font: 700 .76rem/1.2 "Courier New", Courier, monospace;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .site-header a { color: inherit; text-decoration: none; }
+    .site-header a:hover { text-decoration: underline; }
+
+    main { width: min(1500px, 100%); margin: 0 auto; padding: clamp(1rem, 3vw, 2.5rem); }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(18rem, .55fr);
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: clamp(2rem, 5vw, 4.5rem);
+    }
+
+    .eyebrow, .step-label, .card-kicker, .status-label {
+      margin: 0 0 .55rem;
+      font: 700 .7rem/1.3 "Courier New", Courier, monospace;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 950px;
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 8rem);
+      line-height: .82;
+      letter-spacing: -.075em;
+    }
+
+    .intro-copy {
+      max-width: 30rem;
+      margin: 0;
+      padding: 1rem 0 0 1rem;
+      border-left: var(--line);
+      font-size: clamp(1rem, 1.4vw, 1.25rem);
+      line-height: 1.4;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(320px, .8fr) minmax(420px, 1.2fr);
+      border: var(--line);
+      box-shadow: 9px 9px 0 rgba(23, 23, 20, .18);
+    }
+
+    .input-panel, .critique-panel { min-width: 0; padding: clamp(1.1rem, 2.5vw, 2rem); }
+    .input-panel { background: var(--blue); border-right: var(--line); }
+    .critique-panel { background: var(--panel); }
+
+    .panel-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: .7rem;
+      border-bottom: var(--line);
+    }
+
+    .panel-heading h2 { margin: 0; font-size: clamp(1.45rem, 2vw, 2rem); }
+    .panel-heading span { font: .72rem/1.2 "Courier New", Courier, monospace; text-transform: uppercase; }
+
+    label, legend { display: block; margin-bottom: .5rem; font-weight: 700; }
+    .optional { color: var(--muted); font-weight: 400; }
+
+    input[type="text"], textarea {
+      width: 100%;
+      border: var(--line);
+      border-radius: 0;
+      background: rgba(255, 255, 255, .72);
+      color: var(--ink);
+      padding: .8rem;
+      outline: none;
+    }
+
+    input[type="text"]:focus, textarea:focus { box-shadow: inset 0 0 0 2px var(--acid); }
+    textarea { min-height: 13rem; resize: vertical; line-height: 1.45; }
+
+    .field { margin-bottom: 1.4rem; }
+    fieldset { margin: 0 0 1.4rem; padding: 0; border: 0; }
+
+    .lens-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; }
+    .lens-option { position: relative; }
+    .lens-option input { position: absolute; opacity: 0; pointer-events: none; }
+    .lens-option label {
+      min-height: 4rem;
+      margin: 0;
+      padding: .75rem;
+      border: var(--line);
+      background: rgba(255, 255, 255, .42);
+      cursor: pointer;
+      font-size: .88rem;
+      line-height: 1.25;
+    }
+    .lens-option input:checked + label { background: var(--acid); box-shadow: 4px 4px 0 var(--ink); transform: translate(-2px, -2px); }
+    .lens-option input:focus-visible + label { outline: 3px solid white; outline-offset: 2px; }
+
+    #custom-lens-wrap[hidden] { display: none; }
+
+    .primary-button, .action-button, .text-button {
+      border: var(--line);
+      border-radius: 0;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .primary-button {
+      width: 100%;
+      padding: .95rem 1rem;
+      background: var(--ink);
+      color: white;
+      box-shadow: 5px 5px 0 rgba(255, 255, 255, .8);
+    }
+
+    .primary-button:hover:not(:disabled) { background: #34342f; }
+    button:disabled { opacity: .52; cursor: wait; }
+
+    .privacy-note { margin: 1rem 0 0; font-size: .75rem; line-height: 1.45; color: #42423c; }
+
+    .empty-state {
+      display: grid;
+      min-height: 32rem;
+      align-content: center;
+      justify-items: start;
+    }
+
+    .empty-mark {
+      width: 4.4rem;
+      height: 4.4rem;
+      display: grid;
+      place-items: center;
+      margin-bottom: 1.2rem;
+      border: var(--line);
+      border-radius: 50%;
+      background: var(--acid);
+      font: 700 2rem/1 "Courier New", Courier, monospace;
+    }
+
+    .empty-state h3 { max-width: 34rem; margin: 0 0 .7rem; font-size: clamp(1.7rem, 3vw, 3rem); line-height: 1; }
+    .empty-state p { max-width: 34rem; margin: 0; color: var(--muted); line-height: 1.55; }
+
+    .loading-state { min-height: 32rem; display: grid; align-content: center; }
+    .loading-line { height: 1.1rem; margin: .5rem 0; background: #e7e5dc; overflow: hidden; }
+    .loading-line::after { content: ""; display: block; width: 35%; height: 100%; background: var(--acid); animation: scan 1.15s ease-in-out infinite alternate; }
+    .loading-line:nth-child(2) { width: 85%; }
+    .loading-line:nth-child(3) { width: 70%; }
+    @keyframes scan { to { transform: translateX(190%); } }
+
+    .critique-output[hidden], .empty-state[hidden], .loading-state[hidden] { display: none; }
+    .critique-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+    .tag { padding: .35rem .55rem; border: 1px solid var(--ink); background: var(--acid); font: 700 .66rem/1 "Courier New", Courier, monospace; text-transform: uppercase; }
+    .tag.secondary { background: transparent; }
+
+    .critique-title { margin: 0; font-size: clamp(2rem, 4vw, 4rem); line-height: .95; letter-spacing: -.04em; }
+    .framing { margin: 1rem 0 2rem; padding-left: 1rem; border-left: 5px solid var(--acid); font-size: 1.12rem; line-height: 1.5; }
+
+    .critique-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: var(--line); border-left: var(--line); }
+    .critique-card { min-width: 0; padding: 1rem; border-right: var(--line); border-bottom: var(--line); }
+    .critique-card.wide { grid-column: 1 / -1; }
+    .critique-card h3 { margin: 0 0 .65rem; font-size: 1.05rem; }
+    .critique-card p { margin: 0; line-height: 1.5; }
+    .critique-card ul { margin: 0; padding-left: 1.15rem; }
+    .critique-card li { margin-bottom: .55rem; line-height: 1.45; }
+
+    .observation { padding: .8rem 0; border-top: 1px solid #b7b6af; }
+    .observation:first-of-type { padding-top: 0; border-top: 0; }
+    .evidence { display: block; margin-bottom: .4rem; font-family: Georgia, serif; font-style: italic; }
+    .certainty { display: inline-block; margin-top: .55rem; color: var(--muted); font: .64rem/1.2 "Courier New", Courier, monospace; text-transform: uppercase; }
+
+    .question-card { background: var(--blue); }
+    .move-card { background: var(--acid); }
+
+    .follow-up { margin-top: 1.5rem; padding-top: 1.5rem; border-top: var(--line); }
+    .follow-up h3 { margin: 0 0 .3rem; }
+    .follow-up > p { margin: 0 0 1rem; color: var(--muted); font-size: .9rem; }
+    .action-row { display: flex; flex-wrap: wrap; gap: .55rem; }
+    .action-button { padding: .65rem .8rem; background: white; font-size: .82rem; }
+    .action-button:hover:not(:disabled) { background: var(--acid); }
+
+    .output-toolbar { display: flex; justify-content: flex-end; margin-top: 1rem; }
+    .text-button { padding: .45rem .65rem; background: transparent; font-size: .76rem; }
+    .text-button:hover { background: #e7e5dc; }
+
+    .error-state { padding: 1rem; border: var(--line); background: #ffd9d0; line-height: 1.45; }
+    .error-state[hidden] { display: none; }
+
+    .method {
+      display: grid;
+      grid-template-columns: .65fr 1.35fr;
+      gap: 2rem;
+      margin-top: clamp(3rem, 7vw, 7rem);
+      padding-top: 1.2rem;
+      border-top: var(--line);
+    }
+    .method h2 { margin: 0; font-size: clamp(2rem, 4vw, 4rem); line-height: .95; letter-spacing: -.04em; }
+    .principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: var(--line); border-left: var(--line); }
+    .principle { padding: 1rem; border-right: var(--line); border-bottom: var(--line); }
+    .principle strong { display: block; margin-bottom: .45rem; }
+    .principle p { margin: 0; color: var(--muted); line-height: 1.45; }
+
+    @media (max-width: 850px) {
+      .intro, .workspace, .method { grid-template-columns: 1fr; }
+      .intro-copy { padding: 1rem 0 0; border-left: 0; border-top: var(--line); }
+      .input-panel { border-right: 0; border-bottom: var(--line); }
+    }
+
+    @media (max-width: 540px) {
+      .site-header span { display: none; }
+      .lens-grid, .critique-grid, .principles { grid-template-columns: 1fr; }
+      .critique-card.wide { grid-column: auto; }
+      h1 { font-size: clamp(3.3rem, 18vw, 5rem); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; }
     }
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <a href="index.html">&larr; Computational Workflows</a>
+    <span>Agent study / 01</span>
+  </header>
+
   <main>
-    <p><a href="index.html">&larr; Back to exercises</a></p>
-    <h1>OpenAI Hello World</h1>
-    <p>Send one prompt to the OpenAI Responses API.</p>
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">An interface for situated critique</p>
+        <h1 id="page-title">Critical<br>Friend</h1>
+      </div>
+      <p class="intro-copy">
+        Not a verdict machine. A critical interlocutor that helps expose what a work
+        assumes, enables, excludes, and leaves unresolved.
+      </p>
+    </section>
 
-    <label for="user-input">Message</label>
-    <textarea id="user-input" placeholder="Say hello in three languages."></textarea>
-    <button id="send-btn" type="button">Send</button>
-    <div id="output" role="status" aria-live="polite">The response will appear here.</div>
-    <p class="note">Requests pass through a Firebase Cloud Function. The OpenAI API key is never sent to this page.</p>
+    <section class="workspace" aria-label="Critique workbench">
+      <form class="input-panel" id="critique-form">
+        <div class="panel-heading">
+          <h2>Bring something in</h2>
+          <span>01 / Frame</span>
+        </div>
 
-    <section class="context" aria-labelledby="context-title">
-      <h2 id="context-title">Chatbot as a design project</h2>
+        <div class="field">
+          <label for="artifact">What are we examining?</label>
+          <textarea id="artifact" maxlength="5000" required placeholder="Paste a proposal, design rationale, project description, passage, or other work in progress."></textarea>
+        </div>
 
-      <article>
-        <h3>What role does it play?</h3>
-        <p>
-          In this prototype, the chatbot is an interface for inquiry. It turns a visitor's
-          question into a direct exchange with a language model, making the prompt, wait,
-          response, and possible failure visible. As the project develops, that role could
-          become more specific: a guide to the project's research, a way to explore its data,
-          or a conversational layer for explaining methods and design decisions. Its value
-          should come from that defined context—not simply from adding a chat box.
-        </p>
-      </article>
+        <div class="field">
+          <label for="intent">What is it trying to do? <span class="optional">Optional</span></label>
+          <input id="intent" type="text" maxlength="600" placeholder="Describe the intended audience, effect, or question.">
+        </div>
 
+        <fieldset>
+          <legend>Choose a critical lens</legend>
+          <div class="lens-grid">
+            <div class="lens-option"><input id="lens-power" name="lens" type="radio" value="Power and exclusion" checked><label for="lens-power">Power &amp; exclusion</label></div>
+            <div class="lens-option"><input id="lens-access" name="lens" type="radio" value="Access and legibility"><label for="lens-access">Access &amp; legibility</label></div>
+            <div class="lens-option"><input id="lens-evidence" name="lens" type="radio" value="Evidence and methodology"><label for="lens-evidence">Evidence &amp; method</label></div>
+            <div class="lens-option"><input id="lens-consequence" name="lens" type="radio" value="Environmental and social consequence"><label for="lens-consequence">Consequence</label></div>
+            <div class="lens-option"><input id="lens-form" name="lens" type="radio" value="Form, interaction, and experience"><label for="lens-form">Form &amp; interaction</label></div>
+            <div class="lens-option"><input id="lens-custom" name="lens" type="radio" value="custom"><label for="lens-custom">Construct a lens</label></div>
+          </div>
+        </fieldset>
+
+        <div class="field" id="custom-lens-wrap" hidden>
+          <label for="custom-lens">Name the lens</label>
+          <input id="custom-lens" type="text" maxlength="180" placeholder="For example: maintenance and repair">
+        </div>
+
+        <button class="primary-button" id="submit-button" type="submit">Begin critique &rarr;</button>
+        <p class="privacy-note">Your submission passes through a Firebase Cloud Function. The OpenAI API key is never sent to this page. Critique threads use OpenAI response storage and may be retained for up to 30 days. Avoid submitting sensitive or confidential material.</p>
+      </form>
+
+      <section class="critique-panel" aria-labelledby="critique-heading">
+        <div class="panel-heading">
+          <h2 id="critique-heading">Critique ledger</h2>
+          <span id="turn-label">02 / Attend</span>
+        </div>
+
+        <div class="error-state" id="error-state" role="alert" hidden></div>
+
+        <div class="empty-state" id="empty-state">
+          <div class="empty-mark" aria-hidden="true">?</div>
+          <h3>The work speaks first.</h3>
+          <p>Frame the artifact and choose a lens. The agent will distinguish what it can observe from what it infers, then make its reading available for disagreement.</p>
+        </div>
+
+        <div class="loading-state" id="loading-state" role="status" aria-live="polite" hidden>
+          <p class="status-label">Attending to the work&hellip;</p>
+          <div class="loading-line"></div>
+          <div class="loading-line"></div>
+          <div class="loading-line"></div>
+        </div>
+
+        <article class="critique-output" id="critique-output" aria-live="polite" hidden>
+          <div class="critique-meta">
+            <span class="tag" id="lens-tag"></span>
+            <span class="tag secondary" id="iteration-tag">Critique 01</span>
+          </div>
+          <h2 class="critique-title" id="output-title"></h2>
+          <p class="framing" id="output-framing"></p>
+
+          <div class="critique-grid">
+            <section class="critique-card wide">
+              <p class="card-kicker">Evidence / interpretation</p>
+              <h3>What I notice</h3>
+              <div id="observations"></div>
+            </section>
+            <section class="critique-card">
+              <p class="card-kicker">Pressure points</p>
+              <h3>What feels unresolved</h3>
+              <ul id="tensions"></ul>
+            </section>
+            <section class="critique-card">
+              <p class="card-kicker">Against the grain</p>
+              <h3>A counter-reading</h3>
+              <p id="counter-reading"></p>
+            </section>
+            <section class="critique-card question-card">
+              <p class="card-kicker">For the author</p>
+              <h3>One consequential question</h3>
+              <p id="question"></p>
+            </section>
+            <section class="critique-card move-card">
+              <p class="card-kicker">A test, not a command</p>
+              <h3>Possible move</h3>
+              <p id="proposed-move"></p>
+            </section>
+            <section class="critique-card wide">
+              <p class="card-kicker">Limits of this reading</p>
+              <h3>What this critique may be missing</h3>
+              <ul id="blind-spots"></ul>
+            </section>
+          </div>
+
+          <section class="follow-up" aria-labelledby="follow-up-title">
+            <h3 id="follow-up-title">Critique the critique</h3>
+            <p>Choose how the interlocutor should return to the work.</p>
+            <div class="action-row" id="action-row">
+              <button class="action-button" type="button" data-action="Deepen the most consequential tension with closer evidence.">Deepen a tension</button>
+              <button class="action-button" type="button" data-action="Challenge the critique's own assumptions and offer a substantially different reading.">Challenge this reading</button>
+              <button class="action-button" type="button" data-action="Identify an important blind spot that neither the work nor the prior critique has addressed.">Find a blind spot</button>
+              <button class="action-button" type="button" data-action="Turn the proposed move into one concrete, bounded revision experiment while preserving the work's intent.">Draft a revision test</button>
+            </div>
+          </section>
+
+          <div class="output-toolbar">
+            <button class="text-button" id="reset-button" type="button">Start a new critique</button>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <section class="method" aria-labelledby="method-title">
+      <div>
+        <p class="eyebrow">Method, not personality</p>
+        <h2 id="method-title">How this agent reads</h2>
+      </div>
+      <div class="principles">
+        <article class="principle"><strong>Ground claims</strong><p>Point to the work before interpreting it.</p></article>
+        <article class="principle"><strong>Stay situated</strong><p>Name the lens and its limits instead of claiming neutrality.</p></article>
+        <article class="principle"><strong>Keep tension open</strong><p>Resist collapsing ambiguity into a score or verdict.</p></article>
+        <article class="principle"><strong>Return agency</strong><p>Offer revision as an experiment the author may reject.</p></article>
+      </div>
     </section>
   </main>
+
   <script type="module" src="openai-hello-world.js"></script>
 </body>
 </html>
