@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "test-75144"
-  }
+    "default": "test-75144",
+    "staging": "agent-5638c"
+  },
+  "targets": {},
+  "etags": {}
 }
