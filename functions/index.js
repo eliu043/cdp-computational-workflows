@@ -117,6 +117,7 @@ exports.askOpenAI = onCall(
     secrets: [openaiApiKey],
     timeoutSeconds: 60,
     maxInstances: 5,
+    invoker: 'public',
   },
   async (request) => {
     const artifact = request.data?.artifact;
